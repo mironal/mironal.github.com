@@ -1,0 +1,516 @@
+<html>
+      <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <title>Scala入門</title>
+        <link type="text/css" rel="stylesheet" href="assets/css/show.css" />
+        <link type="text/css" rel="stylesheet" href="assets/css/prettify.css" />
+        <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+        <script type="text/javascript" src="assets/js/show.js"></script>
+        <script type="text/javascript" src="assets/js/prettify/prettify.js"></script>
+        <script type="text/javascript" src="assets/js/prettify/lang-apollo.js"></script><script type="text/javascript" src="assets/js/prettify/lang-css.js"></script><script type="text/javascript" src="assets/js/prettify/lang-hs.js"></script><script type="text/javascript" src="assets/js/prettify/lang-lisp.js"></script><script type="text/javascript" src="assets/js/prettify/lang-lua.js"></script><script type="text/javascript" src="assets/js/prettify/lang-ml.js"></script><script type="text/javascript" src="assets/js/prettify/lang-proto.js"></script><script type="text/javascript" src="assets/js/prettify/lang-scala.js"></script><script type="text/javascript" src="assets/js/prettify/lang-sql.js"></script><script type="text/javascript" src="assets/js/prettify/lang-sql.js"></script><script type="text/javascript" src="assets/js/prettify/lang-vb.js"></script><script type="text/javascript" src="assets/js/prettify/lang-vhdl.js"></script><script type="text/javascript" src="assets/js/prettify/lang-wiki.js"></script><script type="text/javascript" src="assets/js/prettify/lang-yaml.js"></script>
+      <script type="text/javascript"><!--
+        window.onload=function() { prettyPrint(); };
+      --></script>
+      </head>
+      <body>
+        <div id="slides">
+          <div id="reel">
+            <div class="content" id="slide-0">
+       <div class="container"><h1 id="Scala%E5%85%A5%E9%96%80">Scala入門</h1><h2 id="%E8%B6%A3%E6%97%A8">趣旨</h2><p>細かい所は置いといて、とりあえず少し書けるようになろう.
+</p><p>(細かい所は突っ込まれても答えられません…)
+</p></div>
+      </div><div class="content" id="slide-1">
+       <div class="container"><h1 id="Scala%E3%82%92%E3%82%84%E3%82%8B%E6%99%82%E3%81%AF%E3%81%AD%E2%80%A6">Scalaをやる時はね…</h1><p><img alt="foo"  src="sectiona/Kodoku_01.jpg" />
+</p><p>ってことで始めます
+</p></div>
+      </div><div class="content" id="slide-2">
+       <div class="container"><h1 id="%E3%81%BC%E3%81%8F">ぼく</h1><h2 id=""><a  href="https://twitter.com/mironal">@mironal -&gt; 山口勝也</a></h2><p><a  href="http://mironal-memo.blogspot.jp">Blog -&gt; http://mironal-memo.blogspot.jp</a>
+</p><p><a  href="http://www.flickr.com/photos/mironal">Flickr -&gt; http://www.flickr.com/photos/mironal</a>
+</p><p><a  href="https://github.com/mironal">GitHub -&gt; https://github.com/mironal</a>
+</p></div>
+      </div><div class="content" id="slide-3">
+       <div class="container"><h1 id="%E3%81%82%E3%81%98%E3%81%87%E3%82%93%E3%81%A0">あじぇんだ</h1><ol><li>Scalaをｲﾝｽｺ
+</li><li>Scalaってなに？
+</li><li>Java vs Scala
+</li><li>Scalaの文法 ← メイン
+</li></ol><br />
+<ul><li>関数型言語以外の言語と比較するとパラダイムが違う。
+</li><li>頭の体操 &amp; 分かんなかったら質問して下さい
+</li></ul></div>
+      </div><div class="content" id="slide-4">
+       <div class="container"><h2 id="Scala%E3%82%92%EF%BD%B2%EF%BE%9D%EF%BD%BD%EF%BD%BA">Scalaをｲﾝｽｺ</h2><p>Scalaのインストールにはbrewを使います.
+</p><p>brew未インストールの人は以下のコマンドでｲﾝｽｺ
+</p><pre><code class="prettyprint lang-sh">ruby -e &quot;$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)&quot;
+</code></pre><p><br />
+次に以下のコマンドでScalaをインストール.
+</p><pre><code class="prettyprint lang-sh">brew install scala
+</code></pre><p>Mac以外の人は適当に頑張ってください(個別に聞いて下さい).
+</p></div>
+      </div><div class="content" id="slide-5">
+       <div class="container"><h2 id="Scala%E3%81%A3%E3%81%A6%E3%81%AA%E3%81%AB%3F">Scalaってなに?</h2><ol><li>オブジェクト指向 &amp; 関数型
+</li><li>短く書ける！(Javaと比較して)
+</li><li>型推論とかモダンな機能が沢山
+</li></ol></div>
+      </div><div class="content" id="slide-6">
+       <div class="container"><h2 id="%E5%9E%8B%E6%8E%A8%E8%AB%96%3F">型推論?</h2><pre><code class="prettyprint lang-java">int i = 4 //今まで
+</code></pre><pre><code class="prettyprint lang-scala">val i = 4 //これから(型推論)
+</code></pre><p>変数iの型は何が代入されたのかで、決定可能。
+</p><p>ってことはいちいち変数宣言のときに型を書く必要はねぇ！！！
+</p><p><br />
+スクリプト言語だと普通だと思うでしょ？
+</p><p><br />
+でも、実はこれ、静的型付けなんですよ！！！！
+</p><pre><code class="">変数の方を一意に決定できなければコンパイル時にエラーを出す。
+なので、エラーが出ない ＝ 型を間違えているというバグが無い
+ということが証明されるって事になるらしい。
+</code></pre></div>
+      </div><div class="content" id="slide-7">
+       <div class="container"><h2 id="Java+vs+Scala">Java vs Scala</h2><p>Javaをdisるぞー！
+</p><h3 id="Java">Java</h3><pre><code class="prettyprint lang-java">List&lt;Integer&gt; list = new ArrayList&lt;Integer&gt;(); //馬鹿なの?
+list.add(1); //長い
+list.add(2); //ダルい
+list.add(3); //無駄
+int one = list.get(0)
+</code></pre><h3 id="Scala">Scala</h3><pre><code class="prettyprint lang-scala">val list = List(1, 2, 3) //スッキリ(≧∇≦)/
+val one = list(0)
+</code></pre></div>
+      </div><div class="content" id="slide-8">
+       <div class="container"><h2 id="Java+vs+Scala">Java vs Scala</h2><h3 id="Java">Java</h3><pre><code class="prettyprint lang-java">Map&lt;String, Integer&gt; map = new HashMap&lt;String, Integer&gt;(); //馬鹿なの？
+map.put(&quot;one&quot;, 1);   //長い
+map.put(&quot;two&quot;, 2);   //ダルい
+map.put(&quot;three&quot;, 3); //無駄
+int one = map.get(&quot;one&quot;);
+</code></pre><h3 id="Scala">Scala</h3><pre><code class="prettyprint lang-scala">val map = Map((&quot;one&quot; -&gt; 1), (&quot;two&quot; -&gt; 2), (&quot;three&quot; -&gt; 3))
+val one = map(&quot;one&quot;)
+</code></pre><p><br />
+※Javaのダメさを強調したことをお詫び申し上げます.
+</p></div>
+      </div><div class="content" id="slide-9">
+       <div class="container"><h2 id="Scala%E3%81%AE%E6%96%87%E6%B3%95%E3%81%AE%E5%89%8D%E3%81%AB">Scalaの文法の前に</h2><p>REPLの使い方
+</p><h3 id="REPL%E3%81%A8%E3%81%AF%EF%BC%9F">REPLとは？</h3><p>Scalaのインタープリタ(対話的実行環境).
+Rubyでいうirb.
+</p><p>ターミナルでscalaって実行してみましょう.下のような奴が起動します.
+</p><pre><code class="prettyprint lang-scala">Welcome to Scala version 2.10.0 (Java HotSpot(TM) 64-Bit Server VM,  Java 1.6.0_43).
+Type in expressions to have them evaluated.
+Type :help for more information.
+
+scala&gt;
+</code></pre></div>
+      </div><div class="content" id="slide-10">
+       <div class="container"><h2 id="Scala%E3%81%AE%E6%96%87%E6%B3%95">Scalaの文法</h2><p>紹介するコードは全てREPLで実行可能です.
+</p><ol><li>変数宣言
+</li><li>代表的な型
+</li><li>代表的な型を使った演算
+</li><li>関数宣言
+</li></ol></div>
+      </div><div class="content" id="slide-11">
+       <div class="container"><h4 id="Scala%E3%81%AE%E6%96%87%E6%B3%95">Scalaの文法</h4><h3 id="%E5%A4%89%E6%95%B0%E5%AE%A3%E8%A8%80">変数宣言</h3><pre><code class="prettyprint lang-scala">scala&gt; val foo = &quot;foooooooo&quot;
+foo: String = foooooooo
+</code></pre><p>or
+</p><pre><code class="prettyprint lang-scala">scala&gt; var bar = &quot;barrrrrrrr&quot;
+bar: String = barrrrrrrr
+</code></pre><p>valは定数でvarは変数です。通常はvalを使用。
+</p><h1 id="%E9%80%9A%E5%B8%B8%E3%81%AFval%E3%82%92%28ry">通常はvalを(ry</h1></div>
+      </div><div class="content" id="slide-12">
+       <div class="container"><h4 id="%E8%A9%A6%E3%81%97%E3%81%A6%E3%81%BF%E3%82%88%E3%81%86%21">試してみよう!</h4><ol><li>varで宣言した変数に再代入してみよう.
+</li><li>valで宣言した変数に再代入(ry
+</li></ol></div>
+      </div><div class="content" id="slide-13">
+       <div class="container"><h4 id="Scala%E3%81%AE%E6%96%87%E6%B3%95">Scalaの文法</h4><h3 id="%E4%BB%A3%E8%A1%A8%E7%9A%84%E3%81%AA%E5%9E%8B%281%2F2%29">代表的な型(1/2)</h3><pre><code class="prettyprint lang-scala">scala&gt; val i = 1
+i: Int = 1
+
+scala&gt; val l = 1L
+l: Long = 1
+
+scala&gt; val d = 0.2
+d: Double = 0.2
+
+scala&gt; val s = &quot;hogehoge&quot;
+s: String = hogehoge
+</code></pre></div>
+      </div><div class="content" id="slide-14">
+       <div class="container"><h4 id="Scala%E3%81%AE%E6%96%87%E6%B3%95">Scalaの文法</h4><h3 id="%E4%BB%A3%E8%A1%A8%E7%9A%84%E3%81%AA%E5%9E%8B%282%2F2%29">代表的な型(2/2)</h3><pre><code class="prettyprint lang-scala">scala&gt; val list = List(1,2,3,4,5)
+list: List[Int] = List(1, 2, 3, 4, 5)
+
+scala&gt; val stringList = List(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;)
+stringList: List[String] = List(a, b, c)
+
+scala&gt; val map = Map(&quot;a&quot; -&gt; 1, &quot;b&quot; -&gt; 2, &quot;c&quot; -&gt; 3)
+map: scala.collection.immutable.Map[String,Int] = Map(a -&gt; 1, b -&gt; 2, c -&gt; 3)
+</code></pre></div>
+      </div><div class="content" id="slide-15">
+       <div class="container"><h4 id="Scala%E3%81%AE%E6%96%87%E6%B3%95">Scalaの文法</h4><h3 id="%E4%BB%A3%E8%A1%A8%E7%9A%84%E3%81%AA%E5%9E%8B%283%2F4%29">代表的な型(3/4)</h3><p>リストの色々な宣言方法
+</p><pre><code class="prettyprint lang-scala">scala&gt; List.range(0, 10)
+res5: List[Int] = List(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)
+
+scala&gt; List.fill(10)(&quot;a&quot;)
+res6: List[String] = List(a, a, a, a, a, a, a, a, a, a)
+
+
+scala&gt; List.tabulate(5)( _ * 2)
+res7: List[Int] = List(0, 2, 4, 6, 8)
+</code></pre></div>
+      </div><div class="content" id="slide-16">
+       <div class="container"><h4 id="Scala%E3%81%AE%E6%96%87%E6%B3%95">Scalaの文法</h4><h3 id="%E4%BB%A3%E8%A1%A8%E7%9A%84%E3%81%AA%E5%9E%8B%284%2F4%29">代表的な型(4/4)</h3><p>タプル
+</p><pre><code class="prettyprint lang-scala">scala&gt; (1,&quot;a&quot;,1.2)
+res0: (Int, String, Double) = (1,a,1.2)
+
+scala&gt; val t = (1,&quot;aa&quot;)
+t: (Int, String) = (1,aa)
+
+scala&gt; val (i, s) = (1, &quot;aa&quot;)
+i: Int = 1
+s: String = aa
+</code></pre></div>
+      </div><div class="content" id="slide-17">
+       <div class="container"><h4 id="Scala%E3%81%AE%E6%96%87%E6%B3%95">Scalaの文法</h4><h3 id="%E4%BB%A3%E8%A1%A8%E7%9A%84%E3%81%AA%E5%9E%8B%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9F%E6%BC%94%E7%AE%97%28Int%29%281%2F7%29">代表的な型を使った演算(Int)(1/7)</h3><pre><code class="prettyprint lang-scala">scala&gt; val a = 10
+a: Int = 10
+scala&gt; val b = 20
+b: Int = 20
+scala&gt; val sum = a + b
+sum: Int = 30
+scala&gt; val product= a * b
+product: Int = 200
+scala&gt; a &gt; b
+res0: Boolean = false
+scala&gt; a &lt; b
+res1: Boolean = true
+</code></pre></div>
+      </div><div class="content" id="slide-18">
+       <div class="container"><h4 id="Scala%E3%81%AE%E6%96%87%E6%B3%95">Scalaの文法</h4><h3 id="%E4%BB%A3%E8%A1%A8%E7%9A%84%E3%81%AA%E5%9E%8B%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9F%E6%BC%94%E7%AE%97%28Int%29%282%2F7%29">代表的な型を使った演算(Int)(2/7)</h3><p>tabキーでメソッド一覧を表示可能.
+</p><p>Int型ではこんな感じ
+</p><pre><code class="prettyprint lang-scala">scala&gt; a.
+%              &amp;              *              +              -              /
+&gt;              &gt;=             &gt;&gt;             &gt;&gt;&gt;            ^              asInstanceOf
+isInstanceOf   toByte         toChar         toDouble       toFloat        toInt
+toLong         toShort        toString       unary_+        unary_-        unary_~
+</code></pre></div>
+      </div><div class="content" id="slide-19">
+       <div class="container"><h4 id="Scala%E3%81%AE%E6%96%87%E6%B3%95">Scalaの文法</h4><h3 id="%E4%BB%A3%E8%A1%A8%E7%9A%84%E3%81%AA%E5%9E%8B%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9F%E6%BC%94%E7%AE%97%28String%29%283%2F7%29">代表的な型を使った演算(String)(3/7)</h3><pre><code class="prettyprint lang-scala">scala&gt; val foo = &quot;foo&quot;
+foo: String = foo
+scala&gt; val bar = &quot;bar&quot;
+bar: String = bar
+scala&gt; foo + bar
+res2: String = foobar
+scala&gt; foo.length
+res3: Int = 3
+scala&gt; foo * 10
+res4: String = foofoofoofoofoofoofoofoofoofoo
+</code></pre></div>
+      </div><div class="content" id="slide-20">
+       <div class="container"><h4 id="Scala%E3%81%AE%E6%96%87%E6%B3%95">Scalaの文法</h4><h3 id="%E4%BB%A3%E8%A1%A8%E7%9A%84%E3%81%AA%E5%9E%8B%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9F%E6%BC%94%E7%AE%97%28String%29%284%2F7%29">代表的な型を使った演算(String)(4/7)</h3><pre><code class="prettyprint lang-scala">scala&gt; foo.
++                     asInstanceOf          charAt                codePointAt
+codePointBefore       codePointCount        compareTo             compareToIgnoreCase
+concat                contains              contentEquals         endsWith
+equalsIgnoreCase      getBytes              getChars              indexOf
+intern                isEmpty               isInstanceOf          lastIndexOf
+length                matches               offsetByCodePoints    regionMatches
+replace               replaceAll            replaceFirst          split
+startsWith            subSequence           substring             toCharArray
+toLowerCase           toString              toUpperCase           trim
+</code></pre></div>
+      </div><div class="content" id="slide-21">
+       <div class="container"><h4 id="Scala%E3%81%AE%E6%96%87%E6%B3%95">Scalaの文法</h4><h3 id="%E4%BB%A3%E8%A1%A8%E7%9A%84%E3%81%AA%E5%9E%8B%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9F%E6%BC%94%E7%AE%97%28List%29%284%2F7%29">代表的な型を使った演算(List)(4/7)</h3><pre><code class="prettyprint lang-scala">// 空のリスト宣言.
+scala&gt; List()
+res16: List[Nothing] = List()
+scala&gt; Nil
+res17: scala.collection.immutable.Nil.type = List()
+// List宣言
+scala&gt; List(1,2,3)
+res23: List[Int] = List(1, 2, 3)
+scala&gt; val oneTwoThree = 1 :: 2 :: 3 :: Nil
+oneTwoThree: List[Int] = List(1, 2, 3)
+//上は空のリストの先頭に3を連結したリストを作って更に先頭に2を連結して...
+//という風にリストが作られている
+</code></pre></div>
+      </div><div class="content" id="slide-22">
+       <div class="container"><h4 id="Scala%E3%81%AE%E6%96%87%E6%B3%95">Scalaの文法</h4><h3 id="%E4%BB%A3%E8%A1%A8%E7%9A%84%E3%81%AA%E5%9E%8B%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9F%E6%BC%94%E7%AE%97%28List%29%285%2F7%29">代表的な型を使った演算(List)(5/7)</h3><pre><code class="prettyprint lang-scala">
+scala&gt; 0 +: List(1,2)
+res24: List[Int] = List(0, 1, 2)
+
+scala&gt; List(0,1) :+ 2
+res25: List[Int] = List(0, 1, 2)
+</code></pre><p>末尾が:のメソッドは右側のオブジェクトがメソッドを呼び出す.
+</p></div>
+      </div><div class="content" id="slide-23">
+       <div class="container"><h4 id="Scala%E3%81%AE%E6%96%87%E6%B3%95">Scalaの文法</h4><h3 id="%E4%BB%A3%E8%A1%A8%E7%9A%84%E3%81%AA%E5%9E%8B%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9F%E6%BC%94%E7%AE%97%28List%29%286%2F7%29">代表的な型を使った演算(List)(6/7)</h3><pre><code class="prettyprint lang-scala">scala&gt; List(1,2,3,4).head
+res27: Int = 1
+
+scala&gt; List(1,2,3,4).tail
+res28: List[Int] = List(2, 3, 4)
+
+scala&gt; List(1,2,3,4).filter( n =&gt; n%2==0)
+res26: List[Int] = List(2, 4)
+
+scala&gt; List(1,2,3,4).filter(_%2==0)
+res1: List[Int] = List(2, 4)
+</code></pre></div>
+      </div><div class="content" id="slide-24">
+       <div class="container"><h4 id="Scala%E3%81%AE%E6%96%87%E6%B3%95">Scalaの文法</h4><h3 id="%E4%BB%A3%E8%A1%A8%E7%9A%84%E3%81%AA%E5%9E%8B%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9F%E6%BC%94%E7%AE%97%28List%29%287%2F7%29">代表的な型を使った演算(List)(7/7)</h3><p>その他色々…
+</p><pre><code class="prettyprint lang-scala">scala&gt; list.
+++                   ++:                  +:                   /:
+/:\                  :+                   ::                   :::
+:\                   addString            aggregate            andThen
+apply                applyOrElse          asInstanceOf         canEqual
+collect              collectFirst         combinations         companion
+compose              contains             containsSlice        copyToArray
+copyToBuffer         corresponds          count                diff
+distinct             drop                 dropRight            dropWhile
+endsWith             exists               filter               filterNot
+find                 flatMap              flatten              fold
+foldLeft             foldRight            forall               foreach
+genericBuilder       groupBy              grouped              hasDefiniteSize
+head                 headOption           indexOf              indexOfSlice
+indexWhere           indices              init                 inits
+intersect            isDefinedAt          isEmpty              isInstanceOf
+isTraversableAgain   iterator             last                 lastIndexOf
+lastIndexOfSlice     lastIndexWhere       lastOption           length
+lengthCompare        lift                 map                  mapConserve
+max                  maxBy                min                  minBy
+mkString             nonEmpty             orElse               padTo
+par                  partition            patch                permutations
+prefixLength         product              productArity         productElement
+productIterator      productPrefix        reduce               reduceLeft
+reduceLeftOption     reduceOption         reduceRight          reduceRightOption
+removeDuplicates     repr                 reverse              reverseIterator
+reverseMap           reverse_:::          runWith              sameElements
+scan                 scanLeft             scanRight            segmentLength
+seq                  size                 slice                sliding
+sortBy               sortWith             sorted               span
+splitAt              startsWith           stringPrefix         sum
+tail                 tails                take                 takeRight
+takeWhile            to                   toArray              toBuffer
+toIndexedSeq         toIterable           toIterator           toList
+toMap                toSeq                toSet                toStream
+toString             toTraversable        toVector             transpose
+union                unzip                unzip3               updated
+view                 withFilter           zip                  zipAll
+</code></pre></div>
+      </div><div class="content" id="slide-25">
+       <div class="container"><h4 id="Scala%E3%81%AE%E6%96%87%E6%B3%95">Scalaの文法</h4><h3 id="%E9%96%A2%E6%95%B0%E5%AE%A3%E8%A8%80">関数宣言</h3><h4 id="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89">メソッド</h4><pre><code class="prettyprint lang-scala">def add(a: Int, b: Int): Int = {
+  a + b
+}
+</code></pre><h4 id="%E9%96%A2%E6%95%B0">関数</h4><pre><code class="prettyprint lang-scala">val add = (a: Int, b: Int) =&gt; {
+  a + b
+}
+</code></pre><p>メソッドは関数オブジェクトでは無い.REPLで試してみると分かる(デモします).
+</p></div>
+      </div><div class="content" id="slide-26">
+       <div class="container"><h4 id="Scala%E3%81%AE%E6%96%87%E6%B3%95">Scalaの文法</h4><h3 id="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E5%AE%A3%E8%A8%80%E3%81%AE%E8%A9%B3%E7%B4%B0">メソッド宣言の詳細</h3><pre><code class="prettyprint lang-scala">def add(a: Int, b: Int): Int = {
+  a + b
+}
+</code></pre><pre><code class="prettyprint lang-scala">def メソッド名(引数1: 引数1の型, 引数2: 引数2の型,....): 戻り値の型 = {
+  処理内容(処理内容が一行の場合は{}を省略可能)
+}
+</code></pre></div>
+      </div><div class="content" id="slide-27">
+       <div class="container"><h4 id="Scala%E3%81%AE%E6%96%87%E6%B3%95">Scalaの文法</h4><h3 id="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E5%AE%A3%E8%A8%80%E3%81%AE%E8%A9%B3%E7%B4%B0">メソッド宣言の詳細</h3><p>メソッド(関数)は入れ子に出来る。
+</p><pre><code class="prettyprint lang-scala">def func() = {
+  def innerFunc() = {
+    println(&quot;innerFunc&quot;)
+  }
+  innerFunc()
+}
+</code></pre><pre><code class="prettyprint lang-scala">val func = () =&gt; {
+  val innerFunc = () =&gt; {
+    println(&quot;innerFunc&quot;)
+  }
+  innerFunc()
+}
+</code></pre></div>
+      </div><div class="content" id="slide-28">
+       <div class="container"><h4 id="Scala%E3%81%AE%E6%96%87%E6%B3%95">Scalaの文法</h4><h3 id="%E9%96%A2%E6%95%B0%E5%AE%A3%E8%A8%80%E3%81%AE%E8%A9%B3%E7%B4%B0">関数宣言の詳細</h3><pre><code class="prettyprint lang-scala">val add = (a: Int, b: Int) =&gt; {
+  a + b
+}
+</code></pre><pre><code class="prettyprint lang-scala">val 関数名 = (引数1: 引数1の型, 引数2: 引数2の型,...) =&gt; {
+  処理内容(処理内容が一行の場合は{}を省略可能)
+}
+</code></pre></div>
+      </div><div class="content" id="slide-29">
+       <div class="container"><h4 id="Scala%E3%81%AE%E6%96%87%E6%B3%95">Scalaの文法</h4><h3 id="if%E6%96%87%281%2F2%29">if文(1/2)</h3><pre><code class="prettyprint lang-scala">val a = 1
+if( a &gt; 2){
+ // true
+}else{
+ // false
+}
+</code></pre></div>
+      </div><div class="content" id="slide-30">
+       <div class="container"><h4 id="Scala%E3%81%AE%E6%96%87%E6%B3%95">Scalaの文法</h4><h3 id="if%E6%96%87%282%2F2%29">if文(2/2)</h3><p>if文は値を返す
+</p><pre><code class="prettyprint lang-scala">val flag = true
+val a = if(flag){
+          1
+        }else{
+          2
+        }
+println(a)
+</code></pre></div>
+      </div><div class="content" id="slide-31">
+       <div class="container"><h4 id="Scala%E3%81%AE%E6%96%87%E6%B3%95">Scalaの文法</h4><h3 id="%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3%E3%83%9E%E3%83%83%E3%83%81">パターンマッチ</h3><pre><code class="prettyprint lang-scala">式 match {
+  case パターン1 =&gt; { 処理1 }
+  case パターン2 =&gt; { 処理2 }
+}
+</code></pre><br />
+<pre><code class="prettyprint lang-scala">val lang = &quot;Java&quot;
+lang match {
+  case &quot;Java&quot; =&gt; println(&quot;Java&quot;)
+  case &quot;Scala&quot; =&gt; println(&quot;Scala&quot;)
+  case _ =&gt; println(&quot;Other&quot;)
+}
+</code></pre></div>
+      </div><div class="content" id="slide-32">
+       <div class="container"><h4 id="Scala%E3%81%AE%E6%96%87%E6%B3%95">Scalaの文法</h4><h3 id="%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3%E3%83%9E%E3%83%83%E3%83%81">パターンマッチ</h3><pre><code class="prettyprint lang-scala">val list = List(1,2,&quot;3&quot;)
+list match {
+  // Int型で要素数が3つのリストとマッチ.変数a, b, cに値を束縛できる.
+  case List(a: Int,b: Int,c: Int) =&gt; println(s&quot;Int =&gt; ${a}, ${b}, ${c}&quot;)
+  // 要素数が3つのリストとマッチ
+  case List(a, b, c) =&gt; println(s&quot;${a}, ${b}, ${c}&quot;)
+  // なんでもマッチ.
+  case _ =&gt; println(&quot;Other&quot;)
+}
+</code></pre></div>
+      </div><div class="content" id="slide-33">
+       <div class="container"><h4 id="Scala%E3%81%AE%E6%96%87%E6%B3%95">Scalaの文法</h4><p>終了 ?
+</p></div>
+      </div><div class="content" id="slide-34">
+       <div class="container"><h4 id="Scala%E3%81%AE%E6%96%87%E6%B3%95">Scalaの文法</h4><p>ちょっと待て？
+</p><p>forとかwhileの繰り返し構文は？
+</p></div>
+      </div><div class="content" id="slide-35">
+       <div class="container"><h4 id="Scala%E3%81%AE%E6%96%87%E6%B3%95">Scalaの文法</h4><p>不思議なことにScalaでは繰り返し構文を使う機会はあまりありません。
+</p><p>Listなどのコレクションクラスが持つメソッドが強力だからだと思います。
+</p></div>
+      </div><div class="content" id="slide-36">
+       <div class="container"><h3 id="Scala%E3%81%AE%E6%96%87%E6%B3%95">Scalaの文法</h3><p>全ての要素を2倍したリストを作る.
+</p><pre><code class="prettyprint lang-scala">// Java風
+var evens = List[Int]() // &lt;- var (ヽ´ω`)
+for( i &lt;- List.range(1, 10)){
+  evens = evens :+ i
+}
+evens: List[Int] = List(1, 2, 3, 4, 5, 6, 7, 8, 9)
+</code></pre><br />
+<pre><code class="prettyprint lang-scala">// Scala風
+scala&gt; List.range(0, 10).map( _ * 2)
+res8: List[Int] = List(0, 2, 4, 6, 8, 10, 12, 14, 16, 18)
+</code></pre><p>Scalaの方が明らかに簡潔に書けている。
+</p></div>
+      </div><div class="content" id="slide-37">
+       <div class="container"><p>偶数だけを取り出して、それぞれの要素を2倍したい
+</p><pre><code class="prettyprint lang-scala">// Java風
+var evens = List[Int]()
+for( i &lt;- List.range(1, 10)){
+  if( i % 2 == 0 ){
+    evens = evens :+ i * 2
+  }
+}
+</code></pre><br />
+<pre><code class="prettyprint lang-scala">// Scala風
+scala&gt; List.range(0, 10).filter(_%2==0).map(_*2)
+res9: List[Int] = List(0, 4, 8, 12, 16)
+</code></pre><p>先の例からの変更箇所はScalaの方が明らかに少ない.
+</p></div>
+      </div><div class="content" id="slide-38">
+       <div class="container"><p>Scalaにはbreakが無いよ！(実はあるけど…)
+</p><p>何かを待ちたいとき
+</p><pre><code class="prettyprint lang-scala">// Java風(コンパイル通りません)
+while(true){ if(somethingIsOver()){ break } }
+</code></pre><pre><code class="prettyprint lang-scala">// Scala風
+def waitSomething(): Unit = {
+  def wait(isOver:Boolean): Unit = isOver match {
+      case true =&gt; () //()はUnitの事
+      case false =&gt; wait(somethingIsOver())
+    }
+  wait(false)
+}
+</code></pre><p>再帰を使ってキメる！！
+</p><pre><code class="prettyprint lang-scala">/*memo*/  def somethingIsOver() = true //を定義しておけば実行できる
+</code></pre></div>
+      </div><div class="content" id="slide-39">
+       <div class="container"><h4 id="%E4%BB%8A%E5%BE%8C%E3%81%AB%E5%90%91%E3%81%91%E3%81%A6">今後に向けて</h4><p>今回はクラスの作り方を扱っていません。
+</p><p>Scalaでクラスを説明するとケースクラスやコンパニオンオブジェクト等、色々な言葉が出てきます。
+</p><p>消化不良に陥る可能性を考慮して今日は止めておくことにしました。
+</p><p>最後にScalaの強力な型チェックの一例を紹介して終わります。
+</p></div>
+      </div><div class="content" id="slide-40">
+       <div class="container"><h2 id="%E5%95%8F%E9%A1%8C%28%E3%81%93%E3%81%93%E3%81%A7%E3%81%AFJava%E3%82%92%E4%BE%8B%E3%81%AB%E3%81%99%E3%82%8B%29">問題(ここではJavaを例にする)</h2><ol><li>switch caseを使うとき、しばしばcaseの漏れが発生する。
+</li><li>コンパイル時にcaseの漏れを検出することが不可能。
+</li></ol><br />
+<pre><code class="prettyprint lang-java">// numは0〜2までの値を取る
+switch (num) {
+  case 0: /* something */ break;
+  case 1: /* something */ break;
+  default: throw new IllegalStateException(&quot;Unknown case.&quot;);
+}
+</code></pre><p>(=_=;) コンパイル時にcase漏れが検出出来れば、テストする必要も無いのにな…
+</p></div>
+      </div><div class="content" id="slide-41">
+       <div class="container"><pre><code class="prettyprint lang-scala">// SealedTraitSample.scalaとして保存してみよう.
+sealed trait Error { def msg: String }
+case class FooError(msg: String) extends Error
+case class BarError(msg: String) extends Error
+
+object SealedTraitSample extends App {
+  val error: Error = FooError(&quot;foo&quot;)
+  printError(error)
+
+  def printError(e: Error) = {
+    error match {
+      case FooError(msg) =&gt; println(msg)
+      case BarError(msg) =&gt; println(msg)
+    }
+  }
+}
+</code></pre></div>
+      </div><div class="content" id="slide-42">
+       <div class="container"><p>保存したディレクトリに行って以下のコマンドを実行
+</p><pre><code class="prettyprint lang-sh">scalac SealedTraitSample.scalk
+</code></pre><p>無事にコンパイル出来たかな？
+</p><p>何も出なければ正常です。
+</p></div>
+      </div><div class="content" id="slide-43">
+       <div class="container"><pre><code class="prettyprint lang-scala">sealed trait Error { def msg: String }
+case class FooError(msg: String) extends Error
+case class BarError(msg: String) extends Error
+
+object SealedTraitSample extends App {
+  val error: Error = FooError(&quot;foo&quot;)
+  printError(error)
+
+  def printError(e: Error) = {
+    error match {
+      case FooError(msg) =&gt; println(msg)
+      //書き換えてみよう
+      //case BarError(msg) =&gt; println(msg)
+    }
+  }
+}
+</code></pre></div>
+      </div><div class="content" id="slide-44">
+       <div class="container"><p>もう一度以下のコマンドを実行
+</p><pre><code class="prettyprint lang-sh">scalac SealedTraitSample.scalk
+</code></pre><p>以下のエラーが出たかな？
+</p><pre><code class="">SealedTraitSample.scala:10: warning: match may not be exhaustive.
+It would fail on the following input: BarError(_)
+    error match {
+    ^
+one warning found
+</code></pre></div>
+      </div><div class="content" id="slide-45">
+       <div class="container"><p>match may not be exhaustive.
+</p><p>マッチは網羅できない場合があります。
+</p></div>
+      </div><div class="content" id="slide-46">
+       <div class="container"><h2 id="%E4%BD%95%E3%81%8C%E8%B5%B7%E3%81%8D%E3%81%9F%E3%81%AE%E3%81%8B%EF%BC%9F">何が起きたのか？</h2><ol><li>sealedがついたクラス(trait)は同一ソースファイル内でのみ継承可能
+</li><li>そのためコンパイル時に、存在しうる全てのサブクラスが確定する。
+</li><li>その結果sealedクラスをパターンマッチに使用した場合、matchの網羅性をコンパイラがチェック可能。
+</li><li>パターンに漏れがある場合は、コンパイラが警告を出す
+</li></ol><p>(ﾟ∀ﾟ) パターンに漏れが有るかどうかのテストはいらねぇ！！！
+</p></div>
+      </div><div class="content" id="slide-47">
+       <div class="container"><p>以上 &amp; 質問
+</p></div>
+      </div>
+          </div>
+        </div>
+        
+      </body>
+    </html>
