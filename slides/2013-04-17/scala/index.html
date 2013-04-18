@@ -1,0 +1,392 @@
+<html>
+      <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <title>Scala入門2 : クラス</title>
+        <link type="text/css" rel="stylesheet" href="assets/css/show.css" />
+        <link type="text/css" rel="stylesheet" href="assets/css/prettify.css" />
+        <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+        <script type="text/javascript" src="assets/js/show.js"></script>
+        <script type="text/javascript" src="assets/js/prettify/prettify.js"></script>
+        <script type="text/javascript" src="assets/js/prettify/lang-apollo.js"></script><script type="text/javascript" src="assets/js/prettify/lang-css.js"></script><script type="text/javascript" src="assets/js/prettify/lang-hs.js"></script><script type="text/javascript" src="assets/js/prettify/lang-lisp.js"></script><script type="text/javascript" src="assets/js/prettify/lang-lua.js"></script><script type="text/javascript" src="assets/js/prettify/lang-ml.js"></script><script type="text/javascript" src="assets/js/prettify/lang-proto.js"></script><script type="text/javascript" src="assets/js/prettify/lang-scala.js"></script><script type="text/javascript" src="assets/js/prettify/lang-sql.js"></script><script type="text/javascript" src="assets/js/prettify/lang-sql.js"></script><script type="text/javascript" src="assets/js/prettify/lang-vb.js"></script><script type="text/javascript" src="assets/js/prettify/lang-vhdl.js"></script><script type="text/javascript" src="assets/js/prettify/lang-wiki.js"></script><script type="text/javascript" src="assets/js/prettify/lang-yaml.js"></script><link type="text/css" rel="stylesheet" href="css/custom.css?1366278999826" />
+      <script type="text/javascript"><!--
+        window.onload=function() { prettyPrint(); };
+      --></script>
+      </head>
+      <body>
+        <div id="slides">
+          <div id="reel">
+            <div class="content" id="slide-0">
+       <div class="container"><h1 id="Scala%E5%85%A5%E9%96%80">Scala入門</h1><h2 id="%E3%82%AF%E3%83%A9%E3%82%B9%E7%B7%A8">クラス編</h2></div>
+      </div><div class="content" id="slide-1">
+       <div class="container"><h1 id="Scala%E3%82%92%E3%82%84%E3%82%8B%E6%99%82%E3%81%AF%E3%81%AD%E2%80%A6">Scalaをやる時はね…</h1><p><img alt="Scalaをやる時はね…画像"  src="http://mironal.github.com/slides/2013-03-13/scala/sectiona/Kodoku_01.jpg" />
+</p><p>ってことで始めます
+</p></div>
+      </div><div class="content" id="slide-2">
+       <div class="container"><h1 id="%E3%81%BC%E3%81%8F">ぼく</h1><h2 id=""><a  href="https://twitter.com/mironal">@mironal -&gt; 山口勝也</a></h2><p><a  href="http://mironal-memo.blogspot.jp">Blog -&gt; http://mironal-memo.blogspot.jp</a>
+</p><p><a  href="http://www.flickr.com/photos/mironal">Flickr -&gt; http://www.flickr.com/photos/mironal</a>
+</p><p><a  href="https://github.com/mironal">GitHub -&gt; https://github.com/mironal</a>
+</p></div>
+      </div><div class="content" id="slide-3">
+       <div class="container"><h1 id="%E3%81%82%E3%81%98%E3%81%87%E3%82%93%E3%81%A0">あじぇんだ</h1><ol><li>クラスの作り方
+</li><li>クラスとオブジェクト
+</li><li>コンパニオンオブジェクト
+</li><li>ケースクラス
+</li></ol></div>
+      </div><div class="content" id="slide-4">
+       <div class="container"><h2 id="%3Cspan+class%3D%22blue%22%3E%E6%9C%80%E5%88%9D%E3%81%AB%E3%81%96%E3%81%A3%E3%81%8F%E3%82%8A%E3%81%A8%E6%96%87%E6%B3%95%E3%82%92%E7%B4%B9%E4%BB%8B%3C%2Fspan%3E%E3%81%97%E3%81%A6%E3%80%81%3Cspan+class%3D%22red%22%3E%E3%81%9D%E3%81%AE%E5%BE%8C%E3%83%8F%E3%83%B3%E3%82%BA%E3%82%AA%E3%83%B3%3C%2Fspan%3E%E3%81%A7%E3%82%84%E3%82%8A%E3%81%BE%E3%81%99"><span class="blue">最初にざっくりと文法を紹介</span>して、<span class="red">その後ハンズオン</span>でやります</h2><h2 id="github%E3%81%ABslide%E3%82%92%E3%82%A2%E3%83%83%E3%83%97%E3%83%AD%E3%83%BC%E3%83%89%E3%81%97%E3%81%A6%E3%81%82%E3%82%8B%E3%81%AE%E3%81%A7%E3%80%81%3Cspan+class%3D%22red%22%3E%E3%82%B3%E3%83%94%E3%83%9A%E3%81%A7%E4%BD%BF%E3%81%A3%E3%81%A6%E4%B8%8B%E3%81%95%E3%81%84%3C%2Fspan%3E">githubにslideをアップロードしてあるので、<span class="red">コピペで使って下さい</span></h2><h2 id=""><a  href="https://github.com/mironal/slide/blob/master/hyper-miuchi/2013-04-17/scala/sectiona/sectiona.md">SlideのURL</a></h2><h2 id="https%3A%2F%2Fgithub.com%2Fmironal%2Fslide%2Fblob%2Fmaster%2Fhyper-miuchi%2F2013-04-17%2Fscala%2Fsectiona%2Fsectiona.md">https://github.com/mironal/slide/blob/master/hyper-miuchi/2013-04-17/scala/sectiona/sectiona.md</h2><p>twitterで流します
+</p></div>
+      </div><div class="content" id="slide-5">
+       <div class="container"><h1 id="1.+%E3%82%AF%E3%83%A9%E3%82%B9%E3%81%AE%E4%BD%9C%E3%82%8A%E6%96%B9">1. クラスの作り方</h1><h2 id="%E5%AE%9A%E7%BE%A9">定義</h2><pre><code class="prettyprint lang-scala">class Greeter {
+  // クラスの中味
+}
+// Greeter : 挨拶する人
+</code></pre><h2 id="%E3%82%A4%E3%83%B3%E3%82%B9%E3%82%BF%E3%83%B3%E3%82%B9%E4%BD%9C%E6%88%90">インスタンス作成</h2><pre><code class="prettyprint lang-scala">val yamada = new Greeter();
+
+val ueda = new Greeter();
+
+</code></pre></div>
+      </div><div class="content" id="slide-6">
+       <div class="container"><h1 id="%E3%82%B3%E3%83%B3%E3%82%B9%E3%83%88%E3%83%A9%E3%82%AF%E3%82%BF">コンストラクタ</h1><p><span class="blue">クラスの初期化</span>を行いたいときに使います
+</p><pre><code class="prettyprint lang-scala">class Greeter {
+  // ここに書いた処理がそのままコンストラクタの処理になる
+  println(&quot;**********&quot;);
+  println(&quot;Created !&quot;);
+  println(&quot;**********&quot;);
+}
+</code></pre></div>
+      </div><div class="content" id="slide-7">
+       <div class="container"><h1 id="%E5%BC%95%E6%95%B0%E3%81%AE%E3%81%82%E3%82%8B%E3%82%B3%E3%83%B3%E3%82%B9%E3%83%88%E3%83%A9%E3%82%AF%E3%82%BF">引数のあるコンストラクタ</h1><pre><code class="prettyprint lang-scala">class Greeter(name: String) {
+  def myName() = name
+}
+</code></pre><pre><code class="prettyprint lang-scala">yamada = new Greeter(&quot;yamada&quot;)
+yamada.myName()
+// yamada
+</code></pre></div>
+      </div><div class="content" id="slide-8">
+       <div class="container"><h1 id="%E3%83%A1%E3%83%B3%E3%83%90%E3%83%BC%E3%81%AE%E5%AE%9A%E7%BE%A9">メンバーの定義</h1><h2 id="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%28%E9%96%A2%E6%95%B0%E3%81%AE%E3%81%93%E3%81%A8%29">メソッド(関数のこと)</h2><pre><code class="prettyprint lang-scala">class Greeter(name: String) {
+  // 公開メソッド
+  def sayHello(name: String): Unit = {
+    println( mkHello(name) )
+    println( &quot;My name is &quot; + myName() )
+  }
+
+  // 非公開メソッド
+  private def mkHello(name: String): String = {
+    s&quot;Hello! ${name}&quot;
+  }
+}
+</code></pre></div>
+      </div><div class="content" id="slide-9">
+       <div class="container"><h1 id="%E3%83%A1%E3%83%B3%E3%83%90%E3%83%BC%E3%81%AE%E5%AE%9A%E7%BE%A9">メンバーの定義</h1><h2 id="%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB%E3%83%89%28%E5%A4%89%E6%95%B0%2C+%E5%AE%9A%E6%95%B0%E3%81%AE%E4%BA%8B%29">フィールド(変数, 定数の事)</h2><pre><code class="prettyprint lang-scala">class Greeter(name: String){
+  val myName = name
+}
+</code></pre><p>冗長なので以下のように書ける
+</p><pre><code class="prettyprint lang-scala">class Greeter(val name: String)
+</code></pre></div>
+      </div><div class="content" id="slide-10">
+       <div class="container"><h1 id="%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%28Java%E3%81%AEstatic%E7%9A%84%E3%81%AA%E5%A5%B4%29">オブジェクト(Javaのstatic的な奴)</h1><p>シングルトンなものを表します.
+</p><p>例えばアプリケーションそのものは一つしか無いものです。
+</p><pre><code class="prettyprint lang-scala">object SayHello {
+  def say() = println(&quot;Hello&quot;)
+}
+
+SayHello.say()
+// Hello
+</code></pre></div>
+      </div><div class="content" id="slide-11">
+       <div class="container"><h1 id="%E3%81%96%E3%81%A3%E3%81%8F%E3%82%8A%E7%B5%82%E4%BA%86">ざっくり終了</h1><p>次からはハンズオンな感じで
+</p></div>
+      </div><div class="content" id="slide-12">
+       <div class="container"><h1 id="%E4%BE%8B%E9%A1%8C">例題</h1><p>これ以降は複素数を表すComplexクラスを用いて説明をします.
+</p><p>エディタを使って以下のコードを<span class="blue">Complex.scala</span>という名前で保存して下さい(コピペ可)
+</p><pre><code class="prettyprint lang-scala">// real      : 実部
+// imaginary : 虚部
+class Complex(real: Double, imaginary: Double) {
+  def r() = real
+  def i() = imaginary
+}
+</code></pre><p>※sample/Complex1.scalaがｿﾚです
+</p></div>
+      </div><div class="content" id="slide-13">
+       <div class="container"><p>続いて以下のコードを同じ<span class="blue">Complex.scala</span>の下に追加.
+</p><pre><code class="prettyprint lang-scala">object ComplexNumbers {
+  def main(args: Array[String]) {
+    val c = new Complex(1.2, 3.4)
+    println(&quot;real part     : &quot; + c.r())
+    println(&quot;imaginary part: &quot; + c.i())
+  }
+}
+</code></pre><p>書けたら<span class="blue">Complex.scala</span>の在るディレクトリで以下のコマンドを実行.
+</p><pre><code class="prettyprint lang-sh">scalac Complex.scala
+scala ComplexNumbers
+// real part     : 1.2
+// imaginary part: 3.4
+</code></pre><p>実行できましたか？
+</p></div>
+      </div><div class="content" id="slide-14">
+       <div class="container"><h1 id="%E3%81%93%E3%81%AE%E3%82%B3%E3%83%BC%E3%83%89%E3%82%92%E6%94%B9%E5%96%84%E3%81%97%E3%81%A6%E3%81%84%E3%81%8D%E3%81%BE%E3%81%99">このコードを改善していきます</h1></div>
+      </div><div class="content" id="slide-15">
+       <div class="container"><h2 id="%E6%94%B9%E5%96%841">改善1</h2><p>先ほどのコードの<span class="blue">この部分</span>
+</p><pre><code class="prettyprint lang-scala">println(&quot;real part     : &quot; + c.r())
+println(&quot;imaginary part: &quot; + c.i())
+</code></pre><span class="blue">この部分</span>
+<pre><code class="prettyprint lang-scala">c.r()
+c.i()
+</code></pre><h2 id="%3Cspan+class%3D%22red%22%3E%28%29%E3%81%8C%E3%83%80%E3%83%AB%E3%81%84.%3C%2Fspan%3E"><span class="red">()がダルい.</span></h2><p>メソッド(関数)をフィールド(変数)の様に呼び出せれば、4回タイピング回数が減らせる.
+</p></div>
+      </div><div class="content" id="slide-16">
+       <div class="container"><h2 id="%28%29%E3%82%92%E7%84%A1%E3%81%8F%E3%81%9D%E3%81%86%281%2F2%29">()を無くそう(1/2)</h2><p>先ほどのComplexクラスを以下のように変更
+</p><pre><code class="prettyprint lang-scala">class Complex(real: Double, imaginary: Double) {
+  def r = real
+  def i = imaginary
+}
+</code></pre><h3 id="diff">diff</h3><pre><code class="prettyprint lang-diff"> class Complex(real: Double, imaginary: Double) {
+-  def r() = real
+-  def i() = imaginary
++  def r = real
++  def i = imaginary
+ }
+</code></pre><p>※sample/Complex2.scalaがｿﾚです
+</p></div>
+      </div><div class="content" id="slide-17">
+       <div class="container"><h2 id="%28%29%E3%82%92%E7%84%A1%E3%81%8F%E3%81%9D%E3%81%86%282%2F2%29">()を無くそう(2/2)</h2><p>ComplexNumbersも以下のように変更
+</p><pre><code class="prettyprint lang-scala">object ComplexNumbers {
+  def main(args: Array[String]) {
+    val c = new Complex(1.2, 3.4)
+    println(&quot;real part     : &quot; + c.r)
+    println(&quot;imaginary part: &quot; + c.i)
+  }
+}
+</code></pre><h3 id="diff">diff</h3><pre><code class="prettyprint lang-diff">-    println(&quot;real part     : &quot; + c.r())
+-    println(&quot;imaginary part: &quot; + c.i())
++    println(&quot;real part     : &quot; + c.r)
++    println(&quot;imaginary part: &quot; + c.i)
+   }
+</code></pre></div>
+      </div><div class="content" id="slide-18">
+       <div class="container"><h2 id="%E5%AE%9F%E8%A1%8C">実行</h2><p>書けたら<span class="blue">Complex.scala</span>の在るディレクトリで以下のコマンドを実行.
+</p><pre><code class="prettyprint lang-sh">scalac Complex.scala
+scala ComplexNumbers
+// real part     : 1.2
+// imaginary part: 3.4
+</code></pre><p>実行できましたか？
+</p></div>
+      </div><div class="content" id="slide-19">
+       <div class="container"><h2 id="%E8%A7%A3%E8%AA%AC">解説</h2><p>引数の無いメソッドは括弧を省略できる.
+</p></div>
+      </div><div class="content" id="slide-20">
+       <div class="container"><h1 id="%E6%AC%A1%E3%81%AE%E3%83%A1%E3%83%B3%E3%83%89%E3%82%A4%E3%81%A8%E3%81%93%E3%82%8D">次のメンドイところ</h1><pre><code class="prettyprint lang-scala">object ComplexNumbers {
+  def main(args: Array[String]) {
+    val c = new Complex(1.2, 3.4)
+    println(&quot;real part     : &quot; + c.r)
+    println(&quot;imaginary part: &quot; + c.i)
+  }
+}
+</code></pre><h2 id="%E3%81%AE">の</h2><pre><code class="prettyprint lang-scala">    println(&quot;real part     : &quot; + c.r)
+    println(&quot;imaginary part: &quot; + c.i)
+</code></pre><p>いちいち文字列構築するの面倒くさい
+</p></div>
+      </div><div class="content" id="slide-21">
+       <div class="container"><h1 id="toString%E3%81%A7%E3%82%AD%E3%83%A1%E3%82%8B">toStringでキメる</h1><p>インスタンスの内容をいちいち文字列を構築して表示するのは面倒なので、toStringに任せたい.
+</p><p>しかし…
+</p><pre><code class="prettyprint lang-scala">val c = new Complex(1.2, 3.4)
+println(c.toString)
+</code></pre><p>を実行すると以下の様な結果になる.
+</p><pre><code class="prettyprint lang-scala">Complex@625dcec6
+</code></pre><h1 id="%E6%84%8F%E5%91%B3%E3%82%8F%E3%81%8B%E3%82%89%E3%82%93%EF%BC%81%EF%BC%81">意味わからん！！</h1></div>
+      </div><div class="content" id="slide-22">
+       <div class="container"><h1 id="%E7%B6%99%E6%89%BF%E3%81%A8Override">継承とOverride</h1><p>スーパークラスを指定していない場合、Scalaではscala.Objectというクラスが勝手にスーパークラスになる.
+</p><br />
+<p>scala.ObjectのtoString()はクラス名@ハッシュで人間に分かり難い文字列が返ってくるので、<span class="blue">適切にoverrideしよう！</span>
+</p></div>
+      </div><div class="content" id="slide-23">
+       <div class="container"><h2 id="toString%E3%82%92%E8%89%AF%E3%81%84%E6%84%9F%E3%81%98%E3%81%AB%E3%81%97%E3%82%88%E3%81%86%281%2F2%29">toStringを良い感じにしよう(1/2)</h2><p>Complexクラスを以下のように変更
+</p><pre><code class="prettyprint lang-scala">class Complex(real: Double, imaginary: Double) {
+  def r = real
+  def i = imaginary
+  // r± ai 的な感じで表示する.
+  override def toString() = f&quot;$r%f$i%+fi&quot;
+}
+</code></pre><h2 id="diff">diff</h2><pre><code class="prettyprint lang-def i = imaginary">+  // r ± ai 的な感じで表示する.
++  override def toString() = f&quot;$r%f$i%+fi&quot;
+</code></pre><span class="blue">※ぶっちゃけ魔術</span>
+</div>
+      </div><div class="content" id="slide-24">
+       <div class="container"><h2 id="toString%E3%82%92%E8%89%AF%E3%81%84%E6%84%9F%E3%81%98%E3%81%AB%E3%81%97%E3%82%88%E3%81%86%282%2F2%29">toStringを良い感じにしよう(2/2)</h2><p>ComplexNumbersも以下のように変更
+</p><pre><code class="prettyprint lang-scala">object ComplexNumbers {
+  def main(args: Array[String]) {
+    val c = new Complex(1.2, 3.4)
+    println(c.toString)
+  }
+}
+</code></pre><h2 id="diff">diff</h2><pre><code class="prettyprint lang-diff">-    println(&quot;real part     : &quot; + c.r)
+-    println(&quot;imaginary part: &quot; + c.i)
++    println(c.toString)
+</code></pre></div>
+      </div><div class="content" id="slide-25">
+       <div class="container"><h2 id="%E5%AE%9F%E8%A1%8C">実行</h2><p>書けたら<span class="blue">Complex.scala</span>の在るディレクトリで以下のコマンドを実行.
+</p><pre><code class="prettyprint lang-sh">scalac Complex.scala
+scala ComplexNumbers
+// 1.200000+3.400000i
+</code></pre><p>実行できましたか？
+</p></div>
+      </div><div class="content" id="slide-26">
+       <div class="container"><h2 id="%E8%A7%A3%E8%AA%AC">解説</h2><p>スーパークラスのメソッドのオーバーライドには<span class="blue">overrideキーワードが必ず必要</span>
+</p><p>不用意なオーバーライドを避けるためです.
+</p></div>
+      </div><div class="content" id="slide-27">
+       <div class="container"><h1 id="%E3%81%95%E3%81%A6">さて</h1></div>
+      </div><div class="content" id="slide-28">
+       <div class="container"><h1 id="%E3%81%93%E3%81%93%E3%81%8B%E3%82%89%E3%81%8C%3Cspan+class%3D%22blue%22%3E%E6%9C%AC%E5%BD%93%E3%81%AE%3C%2Fspan%3E%3Cspan+class%3D%22red%22%3EScala%E3%81%A0%EF%BC%81%3C%2Fspan%3E">ここからが<span class="blue">本当の</span><span class="red">Scalaだ！</span></h1><p><img alt="jigoku"  src="https://raw.github.com/mironal/slide/master/hyper-miuchi/2013-04-17/scala/sectiona/jigoku.jpg" />
+</p></div>
+      </div><div class="content" id="slide-29">
+       <div class="container"><h1 id="%E3%81%BE%E3%81%A0%E9%9D%A2%E5%80%92%E3%81%AA%E3%81%A8%E3%81%93%E3%82%8D">まだ面倒なところ</h1><h2 id="%3Cspan+class%3D%22blue%22%3Enew%E3%81%8C%E3%83%A1%E3%83%B3%E3%83%89%E3%82%A4%3C%2Fspan%3E"><span class="blue">newがメンドイ</span></h2><pre><code class="prettyprint lang-scala">new Complex(1.2, 3.4)
+new Complex(1.2, -3.4)
+</code></pre><br />
+<h2 id="%3Cspan+class%3D%22blue%22%3E%E3%82%A2%E3%82%AF%E3%82%BB%E3%83%83%E3%82%B5%E3%83%BC%E3%81%AE%E5%AE%9A%E7%BE%A9%E3%81%8C%E3%83%A1%E3%83%B3%E3%83%89%E3%82%A4%3C%2Fspan%3E"><span class="blue">アクセッサーの定義がメンドイ</span></h2><pre><code class="prettyprint lang-scala">class Complex(real: Double, imaginary: Double) {
+  def r = real //ここと
+  def i = imaginary //ここ
+}
+</code></pre></div>
+      </div><div class="content" id="slide-30">
+       <div class="container"><h1 id="%E5%80%92%E3%81%99%E3%81%B9%E3%81%8D%3Cspan+class%3D%22red%22%3E%E6%95%B5%3C%2Fspan%3E">倒すべき<span class="red">敵</span></h1><h2 id="1.+new%E3%81%8C%E3%83%A1%E3%83%B3%E3%83%89%E3%82%A4">1. newがメンドイ</h2><h2 id="2.+%E3%82%A2%E3%82%AF%E3%82%BB%E3%83%83%E3%82%B5%E3%83%BC%E3%81%AE%E5%AE%9A%E7%BE%A9%E3%81%8C%E3%83%A1%E3%83%B3%E3%83%89%E3%82%A4">2. アクセッサーの定義がメンドイ</h2></div>
+      </div><div class="content" id="slide-31">
+       <div class="container"><h1 id="%E3%81%9D%E3%82%8C%3Cspan+class%3D%22blue%22%3E%E3%82%B1%E3%83%BC%E3%82%B9%E3%82%AF%E3%83%A9%E3%82%B9%3C%2Fspan%3E%E3%81%A7%E8%A7%A3%E6%B1%BA%E5%87%BA%E6%9D%A5%E3%81%BE%E3%81%99%21%21">それ<span class="blue">ケースクラス</span>で解決出来ます!!</h1><p>その前に以下のことを解説します
+</p><ol><li>コンパニオンオブジェクト
+</li><li>applyメソッド
+</li></ol></div>
+      </div><div class="content" id="slide-32">
+       <div class="container"><h1 id="%E3%82%B3%E3%83%B3%E3%83%91%E3%83%8B%E3%82%AA%E3%83%B3%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88">コンパニオンオブジェクト</h1><p>クラス定義と<span class="blue">同一のファイルに同一の名前</span>で定義したobject
+</p><pre><code class="prettyprint lang-scala">// コンパニオンクラス
+class Complex(real: Double, imaginary: Double) {
+  def r = real
+  def i = imaginary
+  override def toString() = f&quot;$r%f$i%+fi&quot;
+}
+// コンパニオンオブジェクト
+object Complex {
+}
+</code></pre></div>
+      </div><div class="content" id="slide-33">
+       <div class="container"><h1 id="apply%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89">applyメソッド</h1><p>言葉で説明するよりコードで！
+</p><p>applyは特別なメソッドで以下のように書くと
+</p><pre><code class="prettyprint lang-scala">object Complex {
+  def apply(i: Double, r: Double) = {
+    println(f&quot;$r%f$i%+fi&quot;)
+  }
+}
+</code></pre><pre><code class="prettyprint lang-scala">Complex.apply(1.2, 3.4)
+</code></pre><p>の変わりに
+</p><pre><code class="prettyprint lang-scala">Complex(1.2, 3.4)
+</code></pre><p>と書ける！！
+</p></div>
+      </div><div class="content" id="slide-34">
+       <div class="container"><h1 id="%3F%3F%3F%3F%3F%3F">??????</h1><p>前回やった
+</p><pre><code class="prettyprint lang-scala">val list = List(1, 2, 3, 4)
+</code></pre><p><br />
+とかも実は
+</p><pre><code class="prettyprint lang-scala">val list = List.apply(1, 2, 3, 4)
+</code></pre><br />
+<p>を呼び出しているのです.
+</p><h1 id="%E7%B0%A1%E5%8D%98%E3%81%A7%E3%81%97%E3%82%87%EF%BC%9F">簡単でしょ？</h1></div>
+      </div><div class="content" id="slide-35">
+       <div class="container"><p>コンパニオンオブジェクト &amp; applyメソッドは原則としてインスタンスを生成するための<span class="blue">ファクトリメソッド</span>として使用します
+</p><pre><code class="prettyprint lang-scala">// コンパニオンクラス
+class Complex(real: Double, imaginary: Double) {
+  def r = real
+  def i = imaginary
+  override def toString() = f&quot;$r%f$i%+fi&quot;
+}
+
+// コンパニオンオブジェクト
+object Complex {
+  def apply(i: Double, r: Double) = {
+      new Complex(i, r)
+  }
+}
+// val c = Complex(1.2, 3.4)と書ける
+</code></pre></div>
+      </div><div class="content" id="slide-36">
+       <div class="container"><h1 id="%E8%A7%A3%E8%AA%AC">解説</h1><p>コンパニオンオブジェクトでファクトリメソッドを作れば、インスタンス化時に<span class="blue">newが要らなくなる</span>.
+</p><br />
+<pre><code class="prettyprint lang-scala">val c = new Complex(1.2, 3.4)
+</code></pre><p>が
+</p><pre><code class="prettyprint lang-scala">val c = Complex(1.2, 3.4)
+</code></pre><p>と書ける
+</p></div>
+      </div><div class="content" id="slide-37">
+       <div class="container"><h1 id="new%E3%81%8C%E8%A6%81%E3%82%89%E3%81%AA%E3%81%8F%E3%81%AA%E3%82%8A%E3%81%BE%E3%81%97%E3%81%9F%EF%BC%81%EF%BC%81">newが要らなくなりました！！</h1><h2 id="1.+%3Cdel%3Enew%E3%81%8C%E3%83%A1%E3%83%B3%E3%83%89%E3%82%A4%3C%2Fdel%3E+%3Cspan+class%3D%22blue%22%3E%3Csmall%3E%28%E5%80%92%E3%81%97%E3%81%9F%29%3C%2Fsmall%3E%3C%2Fspan%3E">1. <del>newがメンドイ</del> <span class="blue"><small>(倒した)</small></span></h2><h2 id="2.+%E3%82%A2%E3%82%AF%E3%82%BB%E3%83%83%E3%82%B5%E3%83%BC%E3%81%AE%E5%AE%9A%E7%BE%A9%E3%81%8C%E3%83%A1%E3%83%B3%E3%83%89%E3%82%A4">2. アクセッサーの定義がメンドイ</h2><h1 id="%3Cspan+class%3D%22red%22%3E%E3%81%A7%E3%82%82%E2%80%A6%3C%2Fspan%3E"><span class="red">でも…</span></h1></div>
+      </div><div class="content" id="slide-38">
+       <div class="container"><h1 id="%3Cspan+class%3D%22red%22%3E%E3%82%B3%E3%83%BC%E3%83%89%E9%87%8F%E3%81%8C%E3%83%A1%E3%83%83%E3%83%81%E3%83%A3%E5%A2%97%E3%81%88%E3%81%9F%3C%2Fspan%3E"><span class="red">コード量がメッチャ増えた</span></h1><br />
+<p><img alt="punpun"  src="https://raw.github.com/mironal/slide/master/hyper-miuchi/2013-04-17/scala/sectiona/punpunmaru.png" />
+</p></div>
+      </div><div class="content" id="slide-39">
+       <div class="container"><h1 id="%E6%96%B0%E3%81%9F%E3%81%AA%E6%95%B5%E3%81%8C%E2%80%A6">新たな敵が…</h1><h2 id="1.+%3Cdel%3Enew%E3%81%8C%E3%83%A1%E3%83%B3%E3%83%89%E3%82%A4%3C%2Fdel%3E+%3Csmall%3E%28%E5%80%92%E3%81%97%E3%81%9F%29%3C%2Fsmall%3E">1. <del>newがメンドイ</del> <small>(倒した)</small></h2><h2 id="2.+%E3%82%A2%E3%82%AF%E3%82%BB%E3%83%83%E3%82%B5%E3%83%BC%E3%81%AE%E5%AE%9A%E7%BE%A9%E3%81%8C%E3%83%A1%E3%83%B3%E3%83%89%E3%82%A4">2. アクセッサーの定義がメンドイ</h2><h2 id="%3Cspan+class%3D%22red%22%3E3.+%E3%82%B3%E3%83%B3%E3%83%91%E3%83%8B%E3%82%AA%E3%83%B3%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E6%9B%B8%E3%81%8F%E3%81%AE%E3%83%80%E3%83%AB%E3%81%84%3C%2Fspan%3E"><span class="red">3. コンパニオンオブジェクト書くのダルい</span></h2></div>
+      </div><div class="content" id="slide-40">
+       <div class="container"><h1 id="%E3%81%9D%E3%82%8C%3Cspan+class%3D%22blue%22%3E%E3%82%B1%E3%83%BC%E3%82%B9%E3%82%AF%E3%83%A9%E3%82%B9%3C%2Fspan%3E%E3%81%A7%E8%A7%A3%E6%B1%BA%E3%81%A7%E3%81%8D%E3%82%8B%E3%82%88%EF%BC%81">それ<span class="blue">ケースクラス</span>で解決できるよ！</h1><p>今度こそケースクラスです
+</p></div>
+      </div><div class="content" id="slide-41">
+       <div class="container"><h1 id="%E8%AA%AC%E6%98%8E%E3%81%97%E3%82%88%E3%81%86%EF%BC%81">説明しよう！</h1><p>ケースクラスとは以下の機能がﾓﾘﾓﾘなクラスのことだ！！
+</p><br />
+<ol><li>コンストラクタの引数を<span class="blue">public val(フィールド)にする</span>
+</li><li>上記フィールドでtoStringを<span class="blue">自動的に実装</span>
+</li><li>コンパニオンオブジェクトを<span class="blue">自動的に実装</span>
+</li><li>applyメソッドも<span class="blue">自動的に実装</span>
+</li><li>他にも色々自動でやってくれるが触れていない言葉が出てくるので省略
+</li></ol></div>
+      </div><div class="content" id="slide-42">
+       <div class="container"><h2 id="%E3%82%B1%E3%83%BC%E3%82%B9%E3%82%AF%E3%83%A9%E3%82%B9%E3%82%92%E4%BD%BF%E3%81%86%E3%81%A8">ケースクラスを使うと</h2><pre><code class="prettyprint lang-scala">class Complex(real: Double, imaginary: Double) {
+  def r = real
+  def i = imaginary
+}
+object Complex {
+  def apply(i: Double, r: Double) = { new Complex(i, r) }
+}
+
+</code></pre><h2 id="%E3%81%8C">が</h2><pre><code class="prettyprint lang-scala">case class Complex(r: Double, i: Double)
+</code></pre><h2 id="%E3%81%A8%E6%9B%B8%E3%81%91%E3%82%8B%E2%80%A6">と書ける…</h2></div>
+      </div><div class="content" id="slide-43">
+       <div class="container"><pre id="masaka">
+＿人人人人人人人＿
+＞　突然の1行　＜
+￣Y^Y^Y^Y^Y^Y￣
+</pre>
+</div>
+      </div><div class="content" id="slide-44">
+       <div class="container"><h2 id="REPL%E3%81%A7%E3%82%84%E3%81%A3%E3%81%A6%E3%81%BF%E3%82%88%E3%81%86">REPLでやってみよう</h2><pre><code class="prettyprint lang-scala">scala&gt; case class Complex(r: Double, i: Double)
+defined class Complex
+
+scala&gt; val c = Complex(1.2, 3.4)
+c: Complex = Complex(1.2,3.4)
+
+scala&gt; c.r
+res0: Double = 1.2
+
+scala&gt; c.i
+res1: Double = 3.4
+
+scala&gt; c.toString
+res2: String = Complex(1.2,3.4)
+</code></pre></div>
+      </div><div class="content" id="slide-45">
+       <div class="container"><p>toStringは自動生成されますが、
+</p><pre><code class="prettyprint lang-scala">c.toString
+// Complex(1.2, 3.4)
+</code></pre><p>という感じ(コンストラクタっぽく)に生成されますので、気に喰わない場合は以下のようにoverrideしてください
+</p><pre><code class="prettyprint lang-scala">case class Complex(r: Double, i: Double) {
+  override def toString() = f&quot;$r%f$i%+fi&quot;
+}
+</code></pre></div>
+      </div><div class="content" id="slide-46">
+       <div class="container"><p>ということで
+</p></div>
+      </div><div class="content" id="slide-47">
+       <div class="container"><h1 id="%E4%B8%80%E6%B0%97%E3%81%AB%E5%85%A8%E9%83%A8%E5%80%92%E3%81%97%E3%81%9F">一気に全部倒した</h1><h2 id="1.+%3Cdel%3Enew%E3%81%8C%E3%83%A1%E3%83%B3%E3%83%89%E3%82%A4%3C%2Fdel%3E">1. <del>newがメンドイ</del></h2><h2 id="2.+%3Cdel%3E%E3%82%A2%E3%82%AF%E3%82%BB%E3%83%83%E3%82%B5%E3%83%BC%E3%81%AE%E5%AE%9A%E7%BE%A9%E3%81%8C%E3%83%A1%E3%83%B3%E3%83%89%E3%82%A4%3C%2Fdel%3E">2. <del>アクセッサーの定義がメンドイ</del></h2><h2 id="3.+%3Cdel%3E%E3%82%B3%E3%83%B3%E3%83%91%E3%83%8B%E3%82%AA%E3%83%B3%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E6%9B%B8%E3%81%8F%E3%81%AE%E3%83%80%E3%83%AB%E3%81%84%3C%2Fdel%3E">3. <del>コンパニオンオブジェクト書くのダルい</del></h2><h1 id="%3Cspan+class%3D%22red%22%3Ecase%E3%82%AF%E3%83%A9%E3%82%B9+%E5%87%84%E3%81%84%EF%BC%81%EF%BC%81%3C%2Fspan%3E"><span class="red">caseクラス 凄い！！</span></h1></div>
+      </div><div class="content" id="slide-48">
+       <div class="container"><h1 id="%E3%81%8A%E3%82%8F%E3%82%8A">おわり</h1></div>
+      </div>
+          </div>
+        </div>
+        
+      </body>
+    </html>

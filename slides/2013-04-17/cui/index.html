@@ -1,0 +1,125 @@
+<html>
+      <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <title>Scala入門2 : クラス</title>
+        <link type="text/css" rel="stylesheet" href="assets/css/show.css" />
+        <link type="text/css" rel="stylesheet" href="assets/css/prettify.css" />
+        <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+        <script type="text/javascript" src="assets/js/show.js"></script>
+        <script type="text/javascript" src="assets/js/prettify/prettify.js"></script>
+        <script type="text/javascript" src="assets/js/prettify/lang-apollo.js"></script><script type="text/javascript" src="assets/js/prettify/lang-css.js"></script><script type="text/javascript" src="assets/js/prettify/lang-hs.js"></script><script type="text/javascript" src="assets/js/prettify/lang-lisp.js"></script><script type="text/javascript" src="assets/js/prettify/lang-lua.js"></script><script type="text/javascript" src="assets/js/prettify/lang-ml.js"></script><script type="text/javascript" src="assets/js/prettify/lang-proto.js"></script><script type="text/javascript" src="assets/js/prettify/lang-scala.js"></script><script type="text/javascript" src="assets/js/prettify/lang-sql.js"></script><script type="text/javascript" src="assets/js/prettify/lang-sql.js"></script><script type="text/javascript" src="assets/js/prettify/lang-vb.js"></script><script type="text/javascript" src="assets/js/prettify/lang-vhdl.js"></script><script type="text/javascript" src="assets/js/prettify/lang-wiki.js"></script><script type="text/javascript" src="assets/js/prettify/lang-yaml.js"></script><link type="text/css" rel="stylesheet" href="css/custom.css?1366279254958" />
+      <script type="text/javascript"><!--
+        window.onload=function() { prettyPrint(); };
+      --></script>
+      </head>
+      <body>
+        <div id="slides">
+          <div id="reel">
+            <div class="content" id="slide-0">
+       <div class="container"><h1 id="CUI">CUI</h1><ol><li>環境構築
+</li><li>vim
+</li><li>git
+</li><li>tmux
+</li></ol></div>
+      </div><div class="content" id="slide-1">
+       <div class="container"><h1 id="1.+%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89">1. 環境構築</h1><p><a  href="https://docs.google.com/presentation/d/10xdTbBoIY6h5Qaunz_t9-uacdR9mWD0b6ObIXdgZwOM/pub?start=false&amp;loop=false&amp;delayms=3000#slide=id.p">こちら</a>
+</p></div>
+      </div><div class="content" id="slide-2">
+       <div class="container"><h1 id="2.+Vim">2. Vim</h1><h2 id="NeoBudleVim">NeoBudleVim</h2><p>さっきのｱﾚ
+</p><p>プラグイン管理マネージャ
+</p><p>Ubuntuで言う所のapt-get
+</p></div>
+      </div><div class="content" id="slide-3">
+       <div class="container"><h1 id="2.+Vim">2. Vim</h1><p>テキストオブジェクト
+</p><h2 id="%E9%81%B8%E6%8A%9E%E7%B3%BB">選択系</h2><p class="blue">vit</p>
+<p class="blue">vat</p>
+<p><br />
+v: visual(選択)
+</p><p>i: inner
+</p><p>a: all
+</p><p>t: tag
+</p></div>
+      </div><div class="content" id="slide-4">
+       <div class="container"><h1 id="2.+Vim">2. Vim</h1><p>テキストオブジェクト
+</p><h2 id="%E5%89%8A%E9%99%A4">削除</h2><p class="blue">dit</p>
+<p class="blue">dat</p>
+<br />
+<p>d: delete
+</p><p>直ぐに編集したいときは
+</p><p class="blue">cit</p>
+<p class="blue">cat</p>
+<p>c: 削除して編集
+</p></div>
+      </div><div class="content" id="slide-5">
+       <div class="container"><h2 id="%E3%82%BF%E3%82%B0%E4%BB%A5%E5%A4%96%E3%81%AB%E3%82%82%E8%89%B2%E3%80%85%E6%93%8D%E4%BD%9C%E3%81%A7%E3%81%8D%E3%82%8B">タグ以外にも色々操作できる</h2><p><span class="blue">di(</span>
+で括弧の内側を削除
+</p><p><span class="blue">di"</span>
+でダブルコーテーションの内側を削除
+</p><p><span class="blue">diw</span>
+で単語を削除
+</p><p>w:word
+</p><p>他にも色々。組み合わせ無限大！
+</p></div>
+      </div><div class="content" id="slide-6">
+       <div class="container"><h1 id="2.+Vim">2. Vim</h1><p>surround.vim
+</p><p>良い感じに囲める奴
+</p><p>デモします
+</p><p class="blue">ysst</p>
+<p class="blue">Shift + s</p>
+<p class="blue">dst</p>
+</div>
+      </div><div class="content" id="slide-7">
+       <div class="container"><h1 id="3.+git">3. git</h1><h2 id=".gitconfig">.gitconfig</h2><pre><code class="prettyprint lang-sh">[merge]
+  ff = false
+</code></pre><p>でグラフをウニョウニョさせよう
+</p><h2 id=".oh-my-zsh%E3%81%AEgit%EF%BE%8C%EF%BE%9F%EF%BE%97%EF%BD%B7%EF%BE%9E%EF%BE%9D%E3%81%A7%E3%82%A8%E3%82%A4%E3%83%AA%E3%82%A2%E3%82%B9%E3%82%92%E4%BD%BF%E3%81%8A%E3%81%86">.oh-my-zshのgitﾌﾟﾗｷﾞﾝでエイリアスを使おう</h2><pre><code class="prettyprint lang-sh">g=git
+ga='git add'
+gb='git branch'
+gba='git branch -a'
+gc='git commit -v'
+'gc!'='git commit -v --amend'
+gca='git commit -v -a'
+'gca!'='git commit -v -a --amend'
+gcl='git config --list'
+gcm='git checkout master'
+gco='git checkout'
+gcount='git shortlog -sn'
+gcp='git cherry-pick'
+gd='git diff'
+gf='git ls-files | grep'
+ggpnp='git pull origin $(current_branch) &amp;&amp; git push origin $(current_branch)'
+ggpull='git pull origin $(current_branch)'
+ggpush='git push origin $(current_branch)'
+git-svn-dcommit-push='git svn dcommit &amp;&amp; git push github master:svntrunk'
+gl='git pull'
+glg='git log --stat --max-count=5'
+glgg='git log --graph --max-count=5'
+glgga='git log --graph --decorate --all'
+gm='git merge'
+gp='git push'
+gpoat='git push origin --all &amp;&amp; git push origin --tags'
+gr='git remote'
+grh='git reset HEAD'
+grhh='git reset HEAD --hard'
+grmv='git remote rename'
+grrm='git remote remove'
+grset='git remote set-url'
+grt='cd $(git rev-parse --show-toplevel || echo &quot;.&quot;)'
+grup='git remote update'
+grv='git remote -v'
+gsd='git svn dcommit'
+gsr='git svn rebase'
+gss='git status -s'
+gst='git status'
+gup='git pull --rebase'
+gwc='git whatchanged -p --abbrev-commit --pretty=medium'
+</code></pre></div>
+      </div><div class="content" id="slide-8">
+       <div class="container"><h1 id="4.+tmux">4. tmux</h1><span class="blue">蝶のように舞い蜂のように刺す</span>
+</div>
+      </div>
+          </div>
+        </div>
+        
+      </body>
+    </html>

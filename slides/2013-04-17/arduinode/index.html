@@ -1,0 +1,105 @@
+<html>
+      <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <title>Scala入門2 : クラス</title>
+        <link type="text/css" rel="stylesheet" href="assets/css/show.css" />
+        <link type="text/css" rel="stylesheet" href="assets/css/prettify.css" />
+        <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+        <script type="text/javascript" src="assets/js/show.js"></script>
+        <script type="text/javascript" src="assets/js/prettify/prettify.js"></script>
+        <script type="text/javascript" src="assets/js/prettify/lang-apollo.js"></script><script type="text/javascript" src="assets/js/prettify/lang-css.js"></script><script type="text/javascript" src="assets/js/prettify/lang-hs.js"></script><script type="text/javascript" src="assets/js/prettify/lang-lisp.js"></script><script type="text/javascript" src="assets/js/prettify/lang-lua.js"></script><script type="text/javascript" src="assets/js/prettify/lang-ml.js"></script><script type="text/javascript" src="assets/js/prettify/lang-proto.js"></script><script type="text/javascript" src="assets/js/prettify/lang-scala.js"></script><script type="text/javascript" src="assets/js/prettify/lang-sql.js"></script><script type="text/javascript" src="assets/js/prettify/lang-sql.js"></script><script type="text/javascript" src="assets/js/prettify/lang-vb.js"></script><script type="text/javascript" src="assets/js/prettify/lang-vhdl.js"></script><script type="text/javascript" src="assets/js/prettify/lang-wiki.js"></script><script type="text/javascript" src="assets/js/prettify/lang-yaml.js"></script><link type="text/css" rel="stylesheet" href="css/custom.css?1366279223241" />
+      <script type="text/javascript"><!--
+        window.onload=function() { prettyPrint(); };
+      --></script>
+      </head>
+      <body>
+        <div id="slides">
+          <div id="reel">
+            <div class="content" id="slide-0">
+       <div class="container"><h1 id="arduinode%E3%81%AE%E3%81%94%E7%B4%B9%E4%BB%8B">arduinodeのご紹介</h1><img src="https://raw.github.com/mironal/slide/master/hyper-miuchi/2013-04-17/arduinode/sectiona/nodejs-dark.png">
+<span class="big">＋</span>
+<img src="https://raw.github.com/mironal/slide/master/hyper-miuchi/2013-04-17/arduinode/sectiona/ArduinoUno_r2_front.jpg" width="300">
+<h3 id="%3Cspan+class%3D%22blue%22%3EWeb%3C%2Fspan%3E%E3%81%A8%3Cspan+class%3D%22red%22%3E%E3%83%8F%E3%83%BC%E3%83%89%E3%82%A6%E3%82%A7%E3%82%A2%3C%2Fspan%3E%E3%82%92%E7%B9%8B%E3%81%92%E3%82%8B"><span class="blue">Web</span>と<span class="red">ハードウェア</span>を繋げる</h3></div>
+      </div><div class="content" id="slide-1">
+       <div class="container"><h1 id="%E3%81%BC%E3%81%8F">ぼく</h1><h2 id=""><a  href="https://twitter.com/mironal">@mironal -&gt; 山口勝也</a></h2><p><a  href="http://mironal-memo.blogspot.jp">Blog -&gt; http://mironal-memo.blogspot.jp</a>
+</p><p><a  href="http://www.flickr.com/photos/mironal">Flickr -&gt; http://www.flickr.com/photos/mironal</a>
+</p><p><a  href="https://github.com/mironal">GitHub -&gt; https://github.com/mironal</a>
+</p></div>
+      </div><div class="content" id="slide-2">
+       <div class="container"><h1 id="%E8%83%8C%E6%99%AF">背景</h1><p>Arduinoを使ってみたいけど…
+</p><h2 id="%3Cspan+class%3D%22blue%22%3EJavaScript%E3%81%AF%E6%9B%B8%E3%81%91%E3%82%8B%3C%2Fspan%3E%E3%81%91%E3%81%A9%E3%80%81%3Cspan+class%3D%22red%22%3EC%E8%A8%80%E8%AA%9E%E3%81%AF%E6%9B%B8%E3%81%91%E3%81%AA%E3%81%84%E2%80%A6%3C%2Fspan%3E"><span class="blue">JavaScriptは書ける</span>けど、<span class="red">C言語は書けない…</span></h2><h2 id="%E3%83%8F%E3%83%BC%E3%83%89%E3%82%A6%E3%82%A7%E3%82%A2%E3%81%AE%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E3%81%A3%E3%81%A6%3Cspan+class%3D%22blue%22%3E%E6%95%B7%E5%B1%85%E3%81%8C%E9%AB%98%E3%81%9D%E3%81%86%3C%2Fspan%3E">ハードウェアのプログラミングって<span class="blue">敷居が高そう</span></h2><h2 id="%3Cspan+class%3D%22blue%22%3E%E8%A4%87%E6%95%B0%E3%81%AE%E8%A8%80%E8%AA%9E%3C%2Fspan%3E%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E6%9B%B8%E3%81%8F%E3%81%AE%E3%81%AF%E3%83%80%E3%83%AB%E3%81%84"><span class="blue">複数の言語</span>を使って書くのはダルい</h2></div>
+      </div><div class="content" id="slide-3">
+       <div class="container"><h1 id="%E3%81%9D%E3%82%8C%E3%80%81%3Cspan+class%3D%22blue%22%3Earduinode%3C%2Fspan%3E%E3%81%A7%E8%A7%A3%E6%B1%BA%E3%81%A7%E3%81%8D%E3%82%8B%E3%82%88%EF%BC%81">それ、<span class="blue">arduinode</span>で解決できるよ！</h1></div>
+      </div><div class="content" id="slide-4">
+       <div class="container"><h1 id="arduinode%E3%81%A3%E3%81%A6%EF%BC%9F">arduinodeって？</h1><p>arduinodeは<span class="blue">Arduinoのプログラミングを不要</span>にし、<span class="red">node.jsのみでアプリケーションを開発可能</span>にします。
+</p></div>
+      </div><div class="content" id="slide-5">
+       <div class="container"><h1 id="%E3%81%A9%E3%81%86%E3%81%AA%E3%81%A3%E3%81%A6%E3%82%93%E3%81%AE%EF%BC%9F">どうなってんの？</h1><h2 id="%3Cspan+class%3D%22blue%22%3Enode.js%E3%81%8B%E3%82%89Arduino%E3%81%AE%E6%93%8D%E4%BD%9C%E3%82%92%E5%85%A8%E3%81%A6%E8%A1%8C%E3%81%84%E3%81%BE%E3%81%99%E3%80%82%3C%2Fspan%3E"><span class="blue">node.jsからArduinoの操作を全て行います。</span></h2><br />
+<h4 id="RPC%28%E3%83%AA%E3%83%A2%E3%83%BC%E3%83%88%E3%83%97%E3%83%AD%E3%82%B7%E3%83%BC%E3%82%B8%E3%83%A3%E3%82%B3%E3%83%BC%E3%83%AB%29%E7%9A%84%E3%81%AA%EF%BD%B1%EF%BE%9A%E3%81%A7%E3%81%99">RPC(リモートプロシージャコール)的なｱﾚです</h4><h4 id="Arduino%E3%81%ABJavaScript%E3%82%92%E6%B5%81%E3%81%97%E3%81%93%E3%82%93%E3%81%A7%E5%AE%9F%E8%A1%8C%EF%BC%81%E3%81%BF%E3%81%9F%E3%81%84%E3%81%AA%E3%82%84%E3%81%A4%E3%81%A7%E3%81%AF%E3%81%82%E3%82%8A%E3%81%BE%E3%81%9B%E3%82%93">ArduinoにJavaScriptを流しこんで実行！みたいなやつではありません</h4></div>
+      </div><div class="content" id="slide-6">
+       <div class="container"><h1 id="%E6%A7%8B%E6%88%90">構成</h1><img src="https://raw.github.com/mironal/slide/master/hyper-miuchi/2013-04-17/arduinode/sectiona/arduinode.png">
+</div>
+      </div><div class="content" id="slide-7">
+       <div class="container"><h1 id="%E7%99%BB%E5%A0%B4%E4%BA%BA%E7%89%A9">登場人物</h1><p>arduinodeは以下の2つで構成されています
+</p><h2 id="1.+GeneralIoSerial.ino">1. GeneralIoSerial.ino</h2><h2 id="2.+arduinode.js">2. arduinode.js</h2></div>
+      </div><div class="content" id="slide-8">
+       <div class="container"><h1 id="1.+GeneralIoSerial.ino">1. GeneralIoSerial.ino</h1><p>Arduinoのプログラム
+</p><p>node.jsからの指示により色々な動作をする働き者
+</p></div>
+      </div><div class="content" id="slide-9">
+       <div class="container"><h1 id="2.+arduinode.js">2. arduinode.js</h1><p>node.jsのモジュール
+</p><p>node-serialportのラッパー
+</p><pre><code class="prettyprint lang-sh">npm install arduinode
+</code></pre></div>
+      </div><div class="content" id="slide-10">
+       <div class="container"><h1 id="%E4%BD%BF%E3%81%84%E6%96%B9">使い方</h1><ol><li>リポジトリのクローン
+</li><li>Arduinoに書き込む
+</li><li>npm install arduinode
+</li><li>開発する
+</li></ol><br />
+<h2 id="%E3%81%BE%E3%81%9A%E3%81%AF%E3%83%AA%E3%83%9D%E3%82%B8%E3%83%88%E3%83%AA%E3%81%AE%E3%82%AF%E3%83%AD%E3%83%BC%E3%83%B3">まずはリポジトリのクローン</h2><pre><code class="prettyprint lang-sh">git clone https://github.com/mironal/Node-Arduino-General-IO.git
+</code></pre></div>
+      </div><div class="content" id="slide-11">
+       <div class="container"><h2 id="2.+Arduino%E3%81%AB%E6%9B%B8%E3%81%8D%E8%BE%BC%E3%82%80">2. Arduinoに書き込む</h2><pre><code class="prettyprint lang-sh">cd Node-Arduino-General-IO/arduino/GeneralIoSerial
+open .
+</code></pre><p><span class="blue">GeneralIoSerial.ino</span>を<span class="red">Arduino IDEで開いて書き込みボタンを押すだけ</span>(シリアルポートとボードの設定が最初に必要です)
+</p><img src="https://raw.github.com/mironal/slide/master/hyper-miuchi/2013-04-17/arduinode/sectiona/arduino_ide.png">
+</div>
+      </div><div class="content" id="slide-12">
+       <div class="container"><h2 id="3.+npm+install+arduinode">3. npm install arduinode</h2><p>適当な開発用ディレクトリを作ってarduinodeモジュールをインストールします
+</p><pre><code class="prettyprint lang-sh">mkdir sample
+cd sample
+npm install arduinode
+</code></pre></div>
+      </div><div class="content" id="slide-13">
+       <div class="container"><h2 id="4.+%E9%96%8B%E7%99%BA%E3%81%99%E3%82%8B">4. 開発する</h2><pre><code class="prettyprint lang-js">var Arduinode = require(&quot;arduinode&quot;).Arduinode;
+var portName = &quot;/dev/tty.usbmodem1411&quot;;
+
+var arduinode = new Arduinode(portName), function(err, reuslt){
+
+  // アナログ0番ポートの値の読み込み
+  var port = 0;
+  arduinode.analogRead(port, function(err, reuslt){
+    if(err) throw err;
+    console.log(result);
+  });
+});
+</code></pre></div>
+      </div><div class="content" id="slide-14">
+       <div class="container"><h2 id="%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB%E3%82%B3%E3%83%BC%E3%83%89+%26+%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88">サンプルコード &amp; ドキュメント</h2><p><a  href="https://github.com/mironal/Node-Arduino-General-IO/tree/master/node/example">サンプルプロジェクト(arduinode + express + web socket)</a>
+</p><p><a  href="https://github.com/mironal/Node-Arduino-General-IO/tree/master/node/module/test">サンプルソース(テストコード)</a>
+</p><p><a  href="https://github.com/mironal/Node-Arduino-General-IO/blob/master/doc/API.md">APIドキュメント</a>
+</p></div>
+      </div><div class="content" id="slide-15">
+       <div class="container"><h1 id="Demo">Demo</h1></div>
+      </div><div class="content" id="slide-16">
+       <div class="container"><h1 id="%E3%81%8A%E3%82%8F%E3%82%8A">おわり</h1></div>
+      </div><div class="content" id="slide-17">
+       <div class="container"><h2 id="TODO">TODO</h2><p>サンプルプロジェクトでStream APIを使ってるのが分かるような図を作る
+</p></div>
+      </div>
+          </div>
+        </div>
+        
+      </body>
+    </html>
