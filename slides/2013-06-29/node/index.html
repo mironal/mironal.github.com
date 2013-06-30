@@ -1,0 +1,235 @@
+<html>
+      <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <title>node.jsの色々なｱﾚ</title>
+        <link type="text/css" rel="stylesheet" href="assets/css/show.css" />
+        <link type="text/css" rel="stylesheet" href="assets/css/prettify.css" />
+        <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+        <script type="text/javascript" src="assets/js/show.js"></script>
+        <script type="text/javascript" src="assets/js/prettify/prettify.js"></script>
+        <script type="text/javascript" src="assets/js/prettify/lang-apollo.js"></script><script type="text/javascript" src="assets/js/prettify/lang-css.js"></script><script type="text/javascript" src="assets/js/prettify/lang-hs.js"></script><script type="text/javascript" src="assets/js/prettify/lang-lisp.js"></script><script type="text/javascript" src="assets/js/prettify/lang-lua.js"></script><script type="text/javascript" src="assets/js/prettify/lang-ml.js"></script><script type="text/javascript" src="assets/js/prettify/lang-proto.js"></script><script type="text/javascript" src="assets/js/prettify/lang-scala.js"></script><script type="text/javascript" src="assets/js/prettify/lang-sql.js"></script><script type="text/javascript" src="assets/js/prettify/lang-sql.js"></script><script type="text/javascript" src="assets/js/prettify/lang-vb.js"></script><script type="text/javascript" src="assets/js/prettify/lang-vhdl.js"></script><script type="text/javascript" src="assets/js/prettify/lang-wiki.js"></script><script type="text/javascript" src="assets/js/prettify/lang-yaml.js"></script><link type="text/css" rel="stylesheet" href="css/custom.css?1372578152217" />
+      <script type="text/javascript"><!--
+        window.onload=function() { prettyPrint(); };
+      --></script>
+      </head>
+      <body>
+        <div id="slides">
+          <div id="reel">
+            <div class="content" id="slide-0">
+       <div class="container"><h1 id="node.js%E3%81%A7%E3%82%88%E3%81%8F%E4%BD%BF%E3%81%86%EF%BD%B1%EF%BE%9A">node.jsでよく使うｱﾚ</h1><pre><code class="prettyprint lang-js">var module = require('ｱﾚ');
+</code></pre></div>
+      </div><div class="content" id="slide-1">
+       <div class="container"><h1 id="%E3%81%BC%E3%81%8F">ぼく</h1><h2 id=""><a  href="https://twitter.com/mironal">@mironal -&gt; 山口勝也</a></h2><p><a  href="http://mironal-memo.blogspot.jp">Blog -&gt; http://mironal-memo.blogspot.jp</a>
+</p><p><a  href="http://www.flickr.com/photos/mironal">Flickr -&gt; http://www.flickr.com/photos/mironal</a>
+</p><p><a  href="https://github.com/mironal">GitHub -&gt; https://github.com/mironal</a>
+</p></div>
+      </div><div class="content" id="slide-2">
+       <div class="container"><h1 id="%E2%80%BB%E8%AB%B8%E6%B3%A8%E6%84%8F">※諸注意</h1><span class="red">javascript歴が一番浅い私が発表しますよん(^q^)</span>
+<br />
+<br />
+<span class="blue">javascript界隈だと普通こうするよってのがあったら教えてください</span>
+</div>
+      </div><div class="content" id="slide-3">
+       <div class="container"><h1 id="%E3%81%82%E3%81%98%E3%81%87%E3%82%93%E3%81%A0">あじぇんだ</h1><h2 id="%3Cspan+class%3D%22red%22%3E1.+node.js%E3%81%A3%E3%81%A6%E4%BD%95%EF%BC%9F%3C%2Fspan%3E"><span class="red">1. node.jsって何？</span></h2><p>node.js知らない人向けにﾁｮｯﾋﾟﾘだけ説明
+</p><br />
+<h2 id="%3Cspan+class%3D%22red%22%3E2.+3%E3%81%A4%E3%81%AE%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%82%92%E7%B4%B9%E4%BB%8B%3C%2Fspan%3E"><span class="red">2. 3つのモジュールを紹介</span></h2><pre><code class="">    1. request.js
+    2. underscore.js
+    3. async.js
+</code></pre></div>
+      </div><div class="content" id="slide-4">
+       <div class="container"><h1 id="%3Cspan+class%3D%22red%22%3Enode.js%E3%81%A3%E3%81%A6%E4%BD%95%3F%3C%2Fspan%3E"><span class="red">node.jsって何?</span></h1><p>javascriptを実行するためのプログラム(Platform)
+</p>  <br />
+<h2 id="keyword%28%E3%82%B0%E3%82%B0%E3%82%8B%E3%81%A8%E9%9D%A2%E7%99%BD%E3%81%84%E3%81%A8%E6%80%9D%E3%82%8F%E3%82%8C%E3%82%8B%29">keyword(ググると面白いと思われる)</h2><ul><li><span class="red">C10K問題</span>
+</li><li>非同期プログラミング
+</li><li>ノンブロッキングI/O
+</li><li>WebSocket
+</li></ul></div>
+      </div><div class="content" id="slide-5">
+       <div class="container"><h1 id="%3Cspan+class%3D%22red%22%3E3%E3%81%A4%E3%81%AE%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%82%92%E7%B4%B9%E4%BB%8B%3C%2Fspan%3E"><span class="red">3つのモジュールを紹介</span></h1><ol><li>request.js
+</li><li>underscore.js
+</li><li>async.js
+</li></ol></div>
+      </div><div class="content" id="slide-6">
+       <div class="container"><h1 id="%E4%BD%95%E6%95%85%E3%81%93%E3%81%AE3%E3%81%A4%3F">何故この3つ?</h1></div>
+      </div><div class="content" id="slide-7">
+       <div class="container"><h1 id="%E3%81%A4">つ <a  href="https://npmjs.org">https://npmjs.org</a></h1></div>
+      </div><div class="content" id="slide-8">
+       <div class="container"><center>
+  <img src="https://raw.github.com/mironal/slide/master/hyper-miuchi/2013-06-29/node/sectiona/npmjs.org.png">
+</center>
+</div>
+      </div><div class="content" id="slide-9">
+       <div class="container"><center>
+  <img src="https://raw.github.com/mironal/slide/master/hyper-miuchi/2013-06-29/node/sectiona/npmjs.org_allow.png">
+</center>
+</div>
+      </div><div class="content" id="slide-10">
+       <div class="container"><center>
+  <img src="https://raw.github.com/mironal/slide/master/hyper-miuchi/2013-06-29/node/sectiona/kitakore.png" width="900px">
+</center>
+<p>※説明の関係上アジェンダの順番は前後しています.
+</p></div>
+      </div><div class="content" id="slide-11">
+       <div class="container"><h2 id="%E3%81%A1%E3%81%AA%E3%81%BF%E3%81%AB%E2%80%A6">ちなみに…</h2></div>
+      </div><div class="content" id="slide-12">
+       <div class="container"><h2 id="%3Cspan+class%3D%22red%22%3Earduinode.js%3C%2Fspan%3E"><span class="red">arduinode.js</span></h2><center>
+  <p>ｳｴｰｨ</p>
+  <img src="https://raw.github.com/mironal/slide/master/hyper-miuchi/2013-06-29/node/sectiona/uei.png">
+</center>
+</div>
+      </div><div class="content" id="slide-13">
+       <div class="container"><h1 id="%3Cspan+class%3D%22v-small%22%3E%E8%A9%B1%E3%81%AF%E6%88%BB%E3%81%A3%E3%81%A6%3C%2Fspan%3E%E4%BD%95%E6%95%85%E3%81%82%E3%81%AE3%E3%81%A4%3F"><span class="v-small">話は戻って</span>何故あの3つ?</h1><br />
+<ul><li><span class="blue">underscore.js</span>
+</li><li><span class="blue">async.js</span>
+</li><li><span class="blue">request.js</span>
+</li></ul><br />
+<p>は<span class="red">沢山のプロジェクトに使われてる.</span>
+</p><p>なので汎用性が高く、知っておいて損はない！
+</p></div>
+      </div><div class="content" id="slide-14">
+       <div class="container"><span class="v-small">まずは1つ目</span>
+<h1 id="%3Cspan+class%3D%22red%22%3Erequest.js%3C%2Fspan%3E"><span class="red">request.js</span></h1><p><a  href="https://github.com/mikeal/request">https://github.com/mikeal/request</a>
+</p></div>
+      </div><div class="content" id="slide-15">
+       <div class="container"><span class="red">Simplified</span> <span class="blue">HTTP request client.</span>
+<br />
+<br />
+<span class="red">簡略化された</span><span class="blue">HTTPリクエストクライアント</span>
+</div>
+      </div><div class="content" id="slide-16">
+       <div class="container"><p>node.jsにも標準でhttpの機能が揃っているが…
+</p><p>微妙に使いにくい…
+</p><p>そんな時に便利な<span class="red">request.js</span>
+</p></div>
+      </div><div class="content" id="slide-17">
+       <div class="container"><h2 id="request.js%E3%82%92%3Cspan+class%3D%22red%22%3E%E4%BD%BF%E3%82%8F%E3%81%AA%E3%81%84%3C%2Fspan%3E%E3%82%B3%E3%83%BC%E3%83%89">request.jsを<span class="red">使わない</span>コード</h2><pre><code class="prettyprint lang-js">var http = require('http');
+http.get('http://ha.logginging.org/hotentrys', function(res){
+  res.setEncoding('utf-8');
+  // チャンクデータが入ってくる.
+  res.on('data', function(chunk){
+    console.log(chunk);
+  });
+  // 全部受信し終わったら呼ばれる.
+  res.on('end', function(){
+    console.log('end');
+  });
+});
+</code></pre></div>
+      </div><div class="content" id="slide-18">
+       <div class="container"><h2 id="request.js%E3%82%92%3Cspan+class%3D%22red%22%3E%E4%BD%BF%E3%81%A3%E3%81%9F%3C%2Fspan%3E%E3%82%B3%E3%83%BC%E3%83%89">request.jsを<span class="red">使った</span>コード</h2><pre><code class="prettyprint lang-js">var request = require('request');
+var url = 'http://ha.logginging.org/hotentrys';
+
+request(url, function(err, resp, body){
+  if(err) return console.log(err);
+  console.log(body);
+});
+</code></pre><span class="red">Super simple to use</span>
+</div>
+      </div><div class="content" id="slide-19">
+       <div class="container"><h1 id="%E5%AE%9F%E9%9A%9B%E3%81%AB%E5%AE%9F%E8%A1%8C%E3%81%97%E3%81%A6%E3%81%BF%E3%82%8B">実際に実行してみる</h1><ol><li>request.jsを使わないコード
+</li><li>request.jsを使ったコード
+</li><li>受け取った内容が同じ事を比較
+</li></ol></div>
+      </div><div class="content" id="slide-20">
+       <div class="container"><h1 id="%3Cspan+class%3D%22red%22%3Erequest.js%3C%2Fspan%3E%E3%81%AE%E3%81%BE%E3%81%A8%E3%82%81"><span class="red">request.js</span>のまとめ</h1><ul><li>簡単にhttpリクエストを発行できる
+</li><li>GET以外にもPOST, PUT, DELETE, HEAD, …が出来る
+</li><li>httpリクエストしたい時はrequest.jsを使おう!
+</li><li>機能が豊富で把握しきれてない
+</li><li>開発がとても活発で常時Pull Requestが発生してる
+</li></ul></div>
+      </div><div class="content" id="slide-21">
+       <div class="container"><span class="v-small">2つ目</span>
+<h1 id="%3Cspan+class%3D%22red%22%3Eunderscore.js%3C%2Fspan%3E"><span class="red">underscore.js</span></h1><h2 id=""><a  href="http://underscorejs.org">http://underscorejs.org</a></h2></div>
+      </div><div class="content" id="slide-22">
+       <div class="container"><p>Underscore is a utility-belt library for JavaScript that provides a lot of the <span class="red">functional programming</span> support that <span class="blue">you would expect</span> in Prototype.js (or Ruby), but without extending any of the built-in JavaScript objects.
+</p><br />
+<br />
+<h2 id="%3Cspan+class%3D%22v-small%22%3E%E8%8B%B1%E8%AA%9E%E3%81%AF%E8%87%AA%E8%BA%AB%E3%81%AA%E3%81%84%E3%81%8C...%3C%2Fspan%3E%3Cspan+class%3D%22blue%22%3E%E6%9C%9F%E5%BE%85%E3%81%97%E3%81%9F%E3%81%A8%E3%81%8A%E3%82%8A%3C%2Fspan%3E%E3%81%AE%3Cspan+class%3D%22red%22%3E%E9%96%A2%E6%95%B0%E5%9E%8B%3C%2Fspan%3E%E3%81%A3%E3%81%BD%E3%81%84%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E3%81%8C%E5%87%BA%E6%9D%A5%E3%82%8B%E3%81%A3%E3%81%A6%E3%81%93%E3%81%A8%E3%81%A7%E3%81%8A%EF%BD%8B%EF%BC%9F"><span class="v-small">英語は自身ないが...</span><span class="blue">期待したとおり</span>の<span class="red">関数型</span>っぽいプログラミングが出来るってことでおｋ？</h2></div>
+      </div><div class="content" id="slide-23">
+       <div class="container"><h1 id="%E3%82%93%EF%BC%9F+%3Cspan+class%3D%22red%22%3E%E9%96%A2%E6%95%B0%E5%9E%8B%EF%BC%9F%3C%2Fspan%3E">ん？ <span class="red">関数型？</span></h1></div>
+      </div><div class="content" id="slide-24">
+       <div class="container"><center>
+  <img src="https://raw.github.com/mironal/slide/master/hyper-miuchi/2013-06-29/node/sectiona/trollface.jpg" width="600px">
+</center>
+</div>
+      </div><div class="content" id="slide-25">
+       <div class="container"><h1 id="%E3%81%A3%E3%81%A6%E3%81%93%E3%81%A8%E3%81%A7%E3%82%B3%E3%83%BC%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0">ってことでコーディング</h1><h2 id="%E3%81%95%E3%81%A3%E3%81%8Drequest.js%E3%81%A7%E5%8F%96%E5%BE%97%E3%81%97%E3%81%9FJSON%E3%82%92%E5%8A%A0%E5%B7%A5%E3%81%99%E3%82%8B">さっきrequest.jsで取得したJSONを加工する</h2><ol><li>tweetだけ抽出
+</li><li>entryだけ抽出
+</li><li>同じURLのentryをひとつに纏める. cntが最大のものを残す
+</li><li>cntが100以上のエントリーだけ抽出
+</li><li>titleとurlのペアのリストを作る
+</li><li>cntを合計する &amp; 平均値をとる
+</li></ol></div>
+      </div><div class="content" id="slide-26">
+       <div class="container"><h1 id="%3Cspan+class%3D%22red%22%3Eunderscore.js%3C%2Fspan%3E%E3%81%AE%E3%81%BE%E3%81%A8%E3%82%81"><span class="red">underscore.js</span>のまとめ</h1><ul><li>構造を持ったデータを加工するのに便利！
+</li><li>あるデータを別のデータに変換することはプログラムにとって当たり前の事なので常に便利ってこと！
+</li></ul></div>
+      </div><div class="content" id="slide-27">
+       <div class="container"><span class="v-small">最後 3つ目</span>
+<h1 id="%3Cspan+class%3D%22red%22%3Easync.js%3C%2Fspan%3E"><span class="red">async.js</span></h1><p><a  href="https://github.com/caolan/async">https://github.com/caolan/async</a>
+</p></div>
+      </div><div class="content" id="slide-28">
+       <div class="container"><p>Async is a utility module which provides <span class="blue">straight-forward, powerful functions</span> for working with <span class="red">asynchronous JavaScript</span>.
+</p><br />
+<p><span class="red">非同期javascript</span>を扱うための<span class="blue">簡単で強力な関数</span>を提供する
+</p><br />
+<span class="v-small">straight-forwardには"真っ直ぐ"って意味があるので、ネストを解決して真っ直ぐ書けるって意味に掛けてある？</span>
+</div>
+      </div><div class="content" id="slide-29">
+       <div class="container"><h1 id="%3Cspan+class%3D%22red%22%3Enode.js%E3%81%AE%E8%A6%81%E7%82%B9%3C%2Fspan%3E%E3%82%92%E3%81%8A%E3%81%95%E3%82%89%E3%81%84"><span class="red">node.jsの要点</span>をおさらい</h1><p>node.jsは<span class="blue">非同期プログラミング</span>
+</p><p>処理をした結果の受け取り方は以下の2種類
+</p><ol><li>イベントリスナ
+</li><li>コールバック
+</li></ol><p>がある.
+</p><pre><code class="prettyprint lang-js">var result = proc();
+</code></pre><p>というスタイルは同期プログラミング.
+</p></div>
+      </div><div class="content" id="slide-30">
+       <div class="container"><h1 id="%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%83%AA%E3%82%B9%E3%83%8A">イベントリスナ</h1><span class="v-small">こういう奴</span>
+<pre><code class="prettyprint lang-js">  // チャンクデータが入ってくる.
+  res.on('data', function(chunk){
+    console.log(chunk);
+  });
+</code></pre><p>微妙に使い難い
+</p><p>コールバックが適用できない場面で仕方なく使うイメージ.
+</p></div>
+      </div><div class="content" id="slide-31">
+       <div class="container"><h1 id="%E3%82%B3%E3%83%BC%E3%83%AB%E3%83%90%E3%83%83%E3%82%AF">コールバック</h1><span class="v-small">こういう奴</span>
+<p><span>　　　　</span>これ<span class="blue">↓↓↓↓↓↓↓↓↓↓</span>が<span class="red">コールバック</span>.
+</p><pre><code class="prettyprint lang-js">request(url, function(err, resp, body){
+  if(err) return console.log(err);
+  console.log(body);
+});
+</code></pre><p>こっちをよく使う.
+</p><p>コールバックには<span class="blue">重要な規約</span>が課せられている.
+</p><span class="red">一体それは？？？</span>
+</div>
+      </div><div class="content" id="slide-32">
+       <div class="container"><h1 id="%E3%82%B3%E3%83%BC%E3%83%AB%E3%83%90%E3%83%83%E3%82%AF%E3%81%AB%E7%B4%84%E6%9D%9F%E3%81%95%E3%82%8C%E3%81%9F%E3%82%82%E3%81%AE%E2%80%A6">コールバックに約束されたもの…</h1><h2 id="%3Cspan+class%3D%22red%22%3E%E7%AC%AC%E4%B8%80%E5%BC%95%E6%95%B0%E3%81%AF%E3%82%A8%E3%83%A9%E3%83%BC%E3%81%AE%E7%82%BA%E3%81%AB%E4%BD%BF%E3%81%86%3C%2Fspan%3E"><span class="red">第一引数はエラーの為に使う</span></h2><pre><code class="prettyprint lang-js">request(url, function(err, resp, body){
+  if(err) return console.log(err);
+  console.log(body);
+});
+</code></pre><p><span class="red">err</span>の部分
+</p><p>ソース : <a  href="http://nodeguide.com/style.html#callbacks">http://nodeguide.com/style.html#callbacks</a>
+</p></div>
+      </div><div class="content" id="slide-33">
+       <div class="container"><p>この原則が様々なモジュールで守られているので、<span class="blue">async.jsの汎用性が半端ない</span>ことになっています.
+</p></div>
+      </div><div class="content" id="slide-34">
+       <div class="container"><p>でわ、コーディング.
+</p><ol><li>hotentryとnewentryを取得してファイルに保存 &lt;- <span class="red">ネスト地獄</span>
+</li><li><span class="red">ネスト地獄</span>を解消
+</li></ol></div>
+      </div><div class="content" id="slide-35">
+       <div class="container"><h1 id="%3Cspan+class%3D%22red%22%3Easync.js%3C%2Fspan%3E%E3%81%AE%E3%81%BE%E3%81%A8%E3%82%81"><span class="red">async.js</span>のまとめ</h1><ul><li>ネスト地獄の救世主
+</li><li>もう無いと生きられない体になった
+</li><li>yield使えるようになるらしいけどよく知らん！
+</li></ul></div>
+      </div><div class="content" id="slide-36">
+       <div class="container"><h1 id="%E3%81%8A%E3%81%97%E3%81%BE%E3%81%84">おしまい</h1></div>
+      </div>
+          </div>
+        </div>
+        
+      </body>
+    </html>
