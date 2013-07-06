@@ -1,0 +1,114 @@
+<html>
+      <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <title>新宿Scala座 2</title>
+        <link type="text/css" rel="stylesheet" href="assets/css/show.css" />
+        <link type="text/css" rel="stylesheet" href="assets/css/prettify.css" />
+        <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+        <script type="text/javascript" src="assets/js/show.js"></script>
+        <script type="text/javascript" src="assets/js/prettify/prettify.js"></script>
+        <script type="text/javascript" src="assets/js/prettify/lang-apollo.js"></script><script type="text/javascript" src="assets/js/prettify/lang-css.js"></script><script type="text/javascript" src="assets/js/prettify/lang-hs.js"></script><script type="text/javascript" src="assets/js/prettify/lang-lisp.js"></script><script type="text/javascript" src="assets/js/prettify/lang-lua.js"></script><script type="text/javascript" src="assets/js/prettify/lang-ml.js"></script><script type="text/javascript" src="assets/js/prettify/lang-proto.js"></script><script type="text/javascript" src="assets/js/prettify/lang-scala.js"></script><script type="text/javascript" src="assets/js/prettify/lang-sql.js"></script><script type="text/javascript" src="assets/js/prettify/lang-sql.js"></script><script type="text/javascript" src="assets/js/prettify/lang-vb.js"></script><script type="text/javascript" src="assets/js/prettify/lang-vhdl.js"></script><script type="text/javascript" src="assets/js/prettify/lang-wiki.js"></script><script type="text/javascript" src="assets/js/prettify/lang-yaml.js"></script><link type="text/css" rel="stylesheet" href="css/custom.css?1373150080141" />
+      <script type="text/javascript"><!--
+        window.onload=function() { prettyPrint(); };
+      --></script>
+      </head>
+      <body>
+        <div id="slides">
+          <div id="reel">
+            <div class="content" id="slide-0"><div class="container">
+                  <h1 id="Scala%E3%81%AE%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%B3%E3%83%BC%E3%83%89%E3%83%AA%E3%83%BC%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0%E7%92%B0%E5%A2%83%E3%82%92%E8%80%83%E3%81%88%E3%82%8B">Scalaのソースコードリーディング環境を考える</h1>
+                </div>
+      </div><div class="content" id="slide-1"><div class="container">
+                  <h2 id="%E8%87%AA%E5%B7%B1%E7%B4%B9%E4%BB%8B">自己紹介</h2><img src="http://mironal.github.io/images/twitter_icon.jpeg">
+<h2 id=""><a  href="https://twitter.com/mironal">@mironal -&gt; 山口勝也</a></h2><p><a  href="http://mironal-memo.blogspot.jp">Blog -&gt; http://mironal-memo.blogspot.jp</a>
+</p><p><a  href="http://www.flickr.com/photos/mironal">Flickr -&gt; http://www.flickr.com/photos/mironal</a>
+</p><p><a  href="https://github.com/mironal">GitHub -&gt; https://github.com/mironal</a>
+</p>
+                </div>
+      </div><div class="content" id="slide-2"><div class="container">
+                  <h1 id="%E5%89%8D%E5%9B%9E%E3%81%AE%E7%A2%BA%E8%AA%8D">前回の確認</h1><img class="border" src="https://raw.github.com/mironal/slide/master/shinjuku-scala-za/2013-07-06/scala/sectiona/list.png">
+<br />
+<p>進展は無い… ｽﾏﾇ…
+</p>
+                </div>
+      </div><div class="content" id="slide-3"><div class="container">
+                  <h1 id="Scala%E3%81%AE%E3%82%B3%E3%83%BC%E3%83%89%E3%82%92%E8%AA%AD%E3%81%BF%E3%81%9F%E3%81%84%EF%BC%81">Scalaのコードを読みたい！</h1><ul><li>Scalaは全体的に<span class="red">情報が少ない</span>
+</li><li>最も良い情報源はライブラリとかのコード
+</li><li>なので<span class="red">快適にコードが読める環境</span>が欲しい
+</li><li>読んで分かったことを発表して、フィードバックを得たい
+</li><li>情報の足しになれば嬉しい
+</li></ul>
+                </div>
+      </div><div class="content" id="slide-4"><div class="container">
+                  <h1 id="%E3%82%B3%E3%83%BC%E3%83%89%E3%82%92%E8%AA%AD%E3%82%80%E3%81%AE%E3%81%AB%E5%BF%85%E9%A0%88%E3%81%AA%E6%9D%A1%E4%BB%B6">コードを読むのに必須な条件</h1><ul><li>宣言元とかに気軽にジャンプしたい
+</li><li>Scala標準ライブラリやその他ライブラリにもジャンプ
+</li><li>書いて実行もしたいので読むだけ×
+</li></ul>
+                </div>
+      </div><div class="content" id="slide-5"><div class="container">
+                  <h1 id="%E4%BD%95%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E8%AA%AD%E3%82%80%3F">何を使って読む?</h1><ul><li>Vim?
+</li><li>emacs?
+</li><li>Eclipse?
+</li><li>IntelliJ?
+</li></ul>
+                </div>
+      </div><div class="content" id="slide-6"><div class="container">
+                  <h1 id="%E7%B5%90%E8%AB%96%E3%81%8B%E3%82%89%E8%A8%80%E3%81%86%E3%81%A8">結論から言うと</h1><p>(IntelliJ持ってないので)
+</p><h2 id="%3Cspan+class%3D%22red%22%3EEclipse%E3%81%AB%E3%81%AA%E3%81%A3%E3%81%9F%3C%2Fspan%3E"><span class="red">Eclipseになった</span></h2><p><a  href="http://scala-ide.org/">-&gt; Scala IDE for Eclipse</a>
+</p><p>こんな感じです!(Demo)
+</p>
+                </div>
+      </div><div class="content" id="slide-7"><div class="container">
+                  <h1 id="%E4%BB%A5%E4%B8%8A%EF%BC%81">以上！</h1>
+                </div>
+      </div><div class="content" id="slide-8"><div class="container">
+                  <p>この一ヶ月でやったこと
+</p>
+                </div>
+      </div><div class="content" id="slide-9"><div class="container">
+                  <h1 id="%E3%81%9F%E3%81%A9%E3%81%A3%E3%81%9F%E9%81%93%E7%AD%8B">たどった道筋</h1>
+                </div>
+      </div><div class="content" id="slide-10"><div class="container">
+                  <h1 id="%E6%9C%80%E5%88%9D%E3%81%AFVim%E3%81%A7%E8%AA%AD%E3%82%82%E3%81%86%E3%81%A8%E3%81%97%E3%81%9F">最初はVimで読もうとした</h1><p>Scalaを書くときはVimを使ってたから、当然の判断だった
+</p>
+                </div>
+      </div><div class="content" id="slide-11"><div class="container">
+                  <h2 id="%E3%81%93%E3%82%93%E3%81%AA%E7%94%BB%E9%9D%A2%E3%81%AB%E3%81%AA%E3%81%A3%E3%81%9F">こんな画面になった</h2><img src="https://raw.github.com/mironal/slide/master/shinjuku-scala-za/2013-07-06/scala/sectiona/scala-vim.png">
+
+                </div>
+      </div><div class="content" id="slide-12"><div class="container">
+                  <h1 id="%E6%8C%AB%E6%8A%98+%3Cspan+class%3D%22v-small%22%3E%28%EF%BD%B3%EF%BE%9E%EF%BD%A8%EF%BE%91%E3%81%AB%E7%94%B3%E3%81%97%E8%A8%B3%E3%81%AA%E3%81%84%29%3C%2Fspan%3E">挫折 <span class="v-small">(ｳﾞｨﾑに申し訳ない)</span></h1><ul><li>俺のVim力が足りなかった
+</li><li>宣言元にジャンプできない(事が多い)
+</li><li>Scalaのコードが必要になる
+</li></ul><br />
+<p>implicitとか…
+</p>
+                </div>
+      </div><div class="content" id="slide-13"><div class="container">
+                  <h1 id="emacs">emacs</h1><p>ｽﾏﾇ…
+</p><p>Vim派なんだ…
+</p>
+                </div>
+      </div><div class="content" id="slide-14"><div class="container">
+                  <h1 id="%E3%81%9D%E3%81%97%E3%81%A6Eclipse">そしてEclipse</h1><ul><li>Scalaのコードにジャンプできる
+</li><li>Play2のコードにもジャンプできる
+</li></ul><p>だたし…
+</p><ul><li>全てIDEで閉じてない. ターミナルでの作業が必要
+</li><li>Play2のプロジェクトを作るのが面倒
+</li><li>sbtとの連携は調べてない
+</li></ul>
+                </div>
+      </div><div class="content" id="slide-15"><div class="container">
+                  <h1 id="IntelliJ%E3%81%AF%E3%81%A9%E3%81%86%E3%81%AA%E3%81%AE%E3%81%A7%E3%81%97%E3%82%87%E3%81%86%E3%81%8B%EF%BC%9F">IntelliJはどうなのでしょうか？</h1><ul><li>sbtとの連携とか?
+</li><li>IntelliJの中で全部出来るのでしょうか?
+</li></ul>
+                </div>
+      </div><div class="content" id="slide-16"><div class="container">
+                  <h1 id="%E4%BB%A5%E4%B8%8A%E3%81%A7%E3%81%99">以上です</h1>
+                </div>
+      </div>
+          </div>
+        </div>
+        
+      </body>
+    </html>
