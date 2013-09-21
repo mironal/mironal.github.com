@@ -1,0 +1,175 @@
+<html>
+      <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <title>新宿Scala座 3</title>
+        <link type="text/css" rel="stylesheet" href="assets/css/show.css" />
+        <link type="text/css" rel="stylesheet" href="assets/css/prettify.css" />
+        <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+        <script type="text/javascript" src="assets/js/show.js"></script>
+        <script type="text/javascript" src="assets/js/prettify/prettify.js"></script>
+        <script type="text/javascript" src="assets/js/prettify/lang-apollo.js"></script><script type="text/javascript" src="assets/js/prettify/lang-css.js"></script><script type="text/javascript" src="assets/js/prettify/lang-hs.js"></script><script type="text/javascript" src="assets/js/prettify/lang-lisp.js"></script><script type="text/javascript" src="assets/js/prettify/lang-lua.js"></script><script type="text/javascript" src="assets/js/prettify/lang-ml.js"></script><script type="text/javascript" src="assets/js/prettify/lang-proto.js"></script><script type="text/javascript" src="assets/js/prettify/lang-scala.js"></script><script type="text/javascript" src="assets/js/prettify/lang-sql.js"></script><script type="text/javascript" src="assets/js/prettify/lang-sql.js"></script><script type="text/javascript" src="assets/js/prettify/lang-vb.js"></script><script type="text/javascript" src="assets/js/prettify/lang-vhdl.js"></script><script type="text/javascript" src="assets/js/prettify/lang-wiki.js"></script><script type="text/javascript" src="assets/js/prettify/lang-yaml.js"></script><link type="text/css" rel="stylesheet" href="css/custom.css?1379730237535" />
+      <script type="text/javascript"><!--
+        window.onload=function() { prettyPrint(); };
+      --></script>
+      </head>
+      <body>
+        <div id="slides">
+          <div id="reel">
+            <div class="content" id="slide-0"><div class="container">
+                  <h1 id="%3Cspan+class%3D%22blue%22%3E%E7%94%9F%E3%81%8D%E3%82%8B%E3%81%AE%E3%81%8C%E9%9D%A2%E5%80%92%3C%2Fspan%3E%E3%81%A0%E3%81%8B%E3%82%89"><span class="blue">生きるのが面倒</span>だから</h1><h2 id="%3Cspan+class%3D%22red%22%3EScala%3C%2Fspan%3E%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6"><span class="red">Scala</span>を使って</h2><h1 id="%3Cspan+class%3D%22blue%22%3E%E5%AE%B6%E3%82%92%E5%88%B6%E5%BE%A1%3C%2Fspan%3E%E3%81%A7%E3%81%8D%E3%82%8B%E3%82%88%E3%81%86%E3%81%AB%E3%81%97%E3%81%9F"><span class="blue">家を制御</span>できるようにした</h1>
+                </div>
+      </div><div class="content" id="slide-1"><div class="container">
+                  <h2 id="%E8%87%AA%E5%B7%B1%E7%B4%B9%E4%BB%8B">自己紹介</h2><h2 id=""><a  href="https://twitter.com/mironal">@mironal -&gt; 山口勝也</a></h2><img src="http://mironal.github.io/images/twitter_icon.jpeg">
+<br />
+<p><a  href="http://mironal-memo.blogspot.jp">Blog -&gt; http://mironal-memo.blogspot.jp</a>
+</p><p><a  href="http://www.flickr.com/photos/mironal">Flickr -&gt; http://www.flickr.com/photos/mironal</a>
+</p><p><a  href="https://github.com/mironal">GitHub -&gt; https://github.com/mironal</a>
+</p><p><a  href="http://mironal.github.io">勉強会の資料達 -&gt; http://mironal.github.io</a>
+</p>
+                </div>
+      </div><div class="content" id="slide-2"><div class="container">
+                  <h1 id="%E8%A9%B1%E3%81%99%E3%81%93%E3%81%A8">話すこと</h1><ul><li>我が家の構成 &amp; 問題点
+</li><li>Scalatraで作ったもの
+</li><li>Scalaで外部プロセスを実行する方法
+</li></ul>
+                </div>
+      </div><div class="content" id="slide-3"><div class="container">
+                  <h1 id="%E6%88%91%E3%81%8C%E5%AE%B6%E3%81%AE%E6%A7%8B%E6%88%90%E5%93%A1">我が家の構成員</h1><img src="sectiona/oheya.png">
+
+                </div>
+      </div><div class="content" id="slide-4"><div class="container">
+                  <h1 id="MacServer%E3%81%B8%3Cspan+class%3D%22red%22%3E%E5%85%A5%E5%8A%9B%3C%2Fspan%3E%3Cspan+class%3D%22v-small%22%3E%28Mac%2C+iPhone+-%3E+MacServer%3C%2Fspan%3E">MacServerへ<span class="red">入力</span><span class="v-small">(Mac, iPhone -> MacServer</span></h1><img src="sectiona/oheya-input.png" width="550">
+<br />
+<br />
+<p><span class="red">AirPlay</span>(Reflector)を使って音楽 &amp; 画面共有
+</p><span class="v-small"><a href="http://www.airsquirrels.com/reflector/">Reflector($12.99也)</a></span>
+
+                </div>
+      </div><div class="content" id="slide-5"><div class="container">
+                  <h1 id="MacServer%E3%81%8B%E3%82%89%3Cspan+class%3D%22red%22%3E%E5%87%BA%E5%8A%9B%3C%2Fspan%3E%3Cspan+class%3D%22v-small%22%3E%28MacServer+-%3E+TV%2C+Amp%3C%2Fspan%3E">MacServerから<span class="red">出力</span><span class="v-small">(MacServer -> TV, Amp</span></h1><img src="sectiona/oheya-output.png">
+<ul><li>MacServerとTVは<span class="red">HDMI</span>で接続(映像 &amp; 音声)
+</li><li>MacServerとAmpは<span class="red">Phone plug</span>で接続(音声のみ)
+</li></ul><br />
+
+                </div>
+      </div><div class="content" id="slide-6"><div class="container">
+                  <h1 id="%E9%9F%B3%E5%A3%B0%E5%87%BA%E5%8A%9B%E3%81%8C%3Cspan+class%3D%22blue%22%3E2%E7%B3%BB%E7%B5%B1%3C%2Fspan%3E">音声出力が<span class="blue">2系統</span></h1><ul><li>動画を流す時は<span class="red">HDMI</span>で
+</li><li>音楽を流す時は<span class="red">Phone plug</span>を使いたい
+</li></ul><br />
+<img src="sectiona/oheya-output.png">
+
+                </div>
+      </div><div class="content" id="slide-7"><div class="container">
+                  <h1 id="%3Cspan+class%3D%22red%22%3E%E5%95%8F%E9%A1%8C%E7%82%B9%3C%2Fspan%3E"><span class="red">問題点</span></h1><p>毎回Settingから変更するのは面倒
+</p><p>しかも画面共有(vnc)で接続しなくてはいけない…
+</p><img src="sectiona/NeetHouseSoundSetting.png" width="800">
+
+                </div>
+      </div><div class="content" id="slide-8"><div class="container">
+                  <h1 id="%E3%81%9D%E3%81%93%E3%81%A7%EF%BC%81">そこで！</h1><p><span class="blue">ブラウザ</span>から設定できるようにしました.
+</p><p><span class="red">Scalatra</span> + <span class="red">ちょっとしたコマンドラインツール</span>で構成
+</p><br />
+<h2 id="%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6%E3%81%8B%E3%82%89%E3%81%A0%E3%81%8B%E3%82%89iPhone%E3%81%A7%E3%82%82%E5%88%B6%E5%BE%A1%E3%81%A7%E3%81%8D%E3%82%8B%E3%82%88%EF%BC%81%EF%BC%81">ブラウザからだからiPhoneでも制御できるよ！！</h2>
+                </div>
+      </div><div class="content" id="slide-9"><div class="container">
+                  <h1 id="PC%E3%81%A7%E8%A6%8B%E3%81%9F%E7%94%BB%E9%9D%A2">PCで見た画面</h1><img src="sectiona/NeetHouseServerSound.png">
+<p class="blue">
+Scalatraで作ったヽ(•̀ω•́ )ゝ✧
+</p>
+
+                </div>
+      </div><div class="content" id="slide-10"><div class="container">
+                  <h1 id="iPhone%E3%81%A7%E8%A6%8B%E3%81%9F%E7%94%BB%E9%9D%A2">iPhoneで見た画面</h1><img src="sectiona/NeetHouseServerSound-iPhone.png" width=400>
+
+                </div>
+      </div><div class="content" id="slide-11"><div class="container">
+                  <h1 id="%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%83%A9%E3%82%A4%E3%83%B3%E3%83%84%E3%83%BC%E3%83%AB%E3%81%AE%E7%B4%B9%E4%BB%8B">コマンドラインツールの紹介</h1><h2 id="%3Cspan+class%3D%22blue%22%3E%3Cstrong%3Esoundoutput%3C%2Fstrong%3E%3C%2Fspan%3E"><span class="blue"><strong>soundoutput</strong></span></h2><span class="v-small">Macの音声出力デバイスを制御するコマンド</span>
+<ul><li>カレントデバイス表示
+</li><li>デバイス一覧の表示
+</li><li>デバイスの設定
+</li></ul><br />
+<span class="red">ScalatraのServerでこのコマンドを実行している</span>
+
+                </div>
+      </div><div class="content" id="slide-12"><div class="container">
+                  <h2 id="%3Cspan+class%3D%22red%22%3E%E8%BF%91%E6%97%A5%E5%85%AC%E9%96%8B%EF%BC%81%EF%BC%9F%3C%2Fspan%3E%28%E2%86%93help%E3%82%82%E5%AE%8C%E5%82%99%29"><span class="red">近日公開！？</span>(↓helpも完備)</h2><pre><code class="prettyprint lang-help">NeetHouse:bin neethouse$ ./soundoutput -h
+usage: soundoutput
+Show current output sound device
+
+or: soundoutput &lt;device-name|device-number&gt;
+Set output sound device
+
+or: soundoutput [-l|--list] [-h|--help]
+
+Generic Options
+-l,  --list  List all output devices
+-h,  --help  Show this help
+</code></pre>
+                </div>
+      </div><div class="content" id="slide-13"><div class="container">
+                  <h1 id="%E3%81%A1%E3%82%87%E3%81%A3%E3%81%A8Demo">ちょっとDemo</h1>
+                </div>
+      </div><div class="content" id="slide-14"><div class="container">
+                  <h1 id="%E3%81%93%E3%81%93%E3%81%8B%E3%82%89Scala%E3%81%AE%E3%81%8A%E8%A9%B1">ここからScalaのお話</h1>
+                </div>
+      </div><div class="content" id="slide-15"><div class="container">
+                  <h1 id="Scala%E3%81%8B%E3%82%89%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%82%92%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95">Scalaからコマンドを実行する方法</h1><p>REPLで試せます
+</p><pre><code class="prettyprint lang-scala">
+// プロセス実行に必要なパッケージをimport
+import scala.sys.process._
+
+// 実行して結果を標準出力
+// 文字列がProcessオブジェクトに暗黙の型変換される. Process(&quot;ls&quot;).! と同等
+// 戻り値はコマンドの終了ステータス
+&quot;ls&quot;.!
+</code></pre>
+                </div>
+      </div><div class="content" id="slide-16"><div class="container">
+                  <pre><code class="prettyprint lang-scala">
+// 実行して結果を取得
+// \n区切りの文字列で結果が取得できる
+val result = &quot;ls&quot;.!!
+
+// 実行して結果をStreamで取得
+val result = Process(&quot;ls&quot;).lines
+
+/*
+val result = &quot;ls&quot;.lines
+とやるとPredefにある暗黙の型変換と被ってエラーが出る.
+StringOpsの中にlinesメソッドがあるため.
+*/
+</code></pre>
+                </div>
+      </div><div class="content" id="slide-17"><div class="container">
+                  <h1 id="%E3%83%91%E3%82%A4%E3%83%97%E3%82%82%E5%87%BA%E6%9D%A5%E3%82%8B">パイプも出来る</h1><pre><code class="prettyprint lang-scala">
+// ls | grep confを実行
+// #|は暗黙の型変換で衝突しないので文字列のまま使える
+&quot;ls&quot; #| &quot;grep conf&quot; lines
+</code></pre><p><a  href="http://www.scala-lang.org/api/current/index.html#scala.sys.process.ProcessBuilder">続きはWebで -&gt; Document</a>
+</p>
+                </div>
+      </div><div class="content" id="slide-18"><div class="container">
+                  <h1 id="%E4%BB%96%E3%81%AE%E6%A9%9F%E8%83%BD">他の機能</h1><p>Reflectorが不安定だから再起動出来るようにしといた
+</p><br />
+<img src="sectiona/NeetHouseServerProcess.png">
+
+                </div>
+      </div><div class="content" id="slide-19"><div class="container">
+                  <p>あとArduinoと赤外線LEDを使って
+</p><ul><li>テレビ
+</li><li>アンプ
+</li><li>エアコン
+</li></ul><p>の操作もブラウザから出来るようにしたい.
+</p><br />
+<p><a  href="https://github.com/mironal/arduinode">arduinode</a>というnode.jsからArduinoを制御できるライブラリを使いたい.
+</p>
+                </div>
+      </div><div class="content" id="slide-20"><div class="container">
+                  <h1 id="%E4%BB%A5%E4%B8%8A%E3%81%A7%E3%81%99%E3%80%82">以上です。</h1>
+                </div>
+      </div>
+          </div>
+        </div>
+        
+      </body>
+    </html>
