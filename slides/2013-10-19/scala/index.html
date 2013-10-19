@@ -1,0 +1,162 @@
+<html>
+      <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <title>新宿Scala座 5</title>
+        <link type="text/css" rel="stylesheet" href="assets/css/show.css" />
+        <link type="text/css" rel="stylesheet" href="assets/css/prettify.css" />
+        <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+        <script type="text/javascript" src="assets/js/show.js"></script>
+        <script type="text/javascript" src="assets/js/prettify/prettify.js"></script>
+        <script type="text/javascript" src="assets/js/prettify/lang-apollo.js"></script><script type="text/javascript" src="assets/js/prettify/lang-css.js"></script><script type="text/javascript" src="assets/js/prettify/lang-hs.js"></script><script type="text/javascript" src="assets/js/prettify/lang-lisp.js"></script><script type="text/javascript" src="assets/js/prettify/lang-lua.js"></script><script type="text/javascript" src="assets/js/prettify/lang-ml.js"></script><script type="text/javascript" src="assets/js/prettify/lang-proto.js"></script><script type="text/javascript" src="assets/js/prettify/lang-scala.js"></script><script type="text/javascript" src="assets/js/prettify/lang-sql.js"></script><script type="text/javascript" src="assets/js/prettify/lang-sql.js"></script><script type="text/javascript" src="assets/js/prettify/lang-vb.js"></script><script type="text/javascript" src="assets/js/prettify/lang-vhdl.js"></script><script type="text/javascript" src="assets/js/prettify/lang-wiki.js"></script><script type="text/javascript" src="assets/js/prettify/lang-yaml.js"></script><link type="text/css" rel="stylesheet" href="css/custom.css?1382148795021" />
+      <script type="text/javascript"><!--
+        window.onload=function() { prettyPrint(); };
+      --></script>
+      </head>
+      <body>
+        <div id="slides">
+          <div id="reel">
+            <div class="content" id="slide-0"><div class="container">
+                  <h1 id="Scala%E5%91%A8%E3%82%8A%E3%81%AE%E4%BE%BF%E5%88%A9%E3%81%AA%E3%83%84%E3%83%BC%E3%83%AB%E3%81%AE%E7%B4%B9%E4%BB%8B">Scala周りの便利なツールの紹介</h1><p>知ってる人は知っているものなので、お手元の資料作りに勤しんで下さい<code>_(:3 」∠)_</code>
+</p>
+                </div>
+      </div><div class="content" id="slide-1"><div class="container">
+                  <h2 id="%E8%87%AA%E5%B7%B1%E7%B4%B9%E4%BB%8B">自己紹介</h2><h2 id=""><a  href="https://twitter.com/mironal">@mironal -&gt; 山口勝也</a></h2><img src="http://mironal.github.io/images/twitter_icon.jpeg">
+<br />
+<p><a  href="http://mironal-memo.blogspot.jp">Blog -&gt; http://mironal-memo.blogspot.jp</a>
+</p><p><a  href="http://www.flickr.com/photos/mironal">Flickr -&gt; http://www.flickr.com/photos/mironal</a>
+</p><p><a  href="https://github.com/mironal">GitHub -&gt; https://github.com/mironal</a>
+</p><p><a  href="http://mironal.github.io">勉強会の資料達 -&gt; http://mironal.github.io</a>
+</p>
+                </div>
+      </div><div class="content" id="slide-2"><div class="container">
+                  <h1 id="%E8%A9%B1%E3%81%99%E3%81%93%E3%81%A8">話すこと</h1><p>Scala周りの便利なツールの紹介
+</p><ol><li>giter8
+</li><li>conscript
+</li><li>scala-notebook
+</li></ol><br />
+<h3 id="%E6%9C%80%E8%BF%91%E5%85%A8%E7%84%B6+Scala+%E5%87%BA%E6%9D%A5%E3%81%A6%E3%81%AA%E3%81%84%E3%81%8B%E3%82%89">最近全然 Scala 出来てないから</h3><h3 id="%E5%B0%8F%E3%83%8D%E3%82%BF%E3%81%A7%E5%8B%9D%E8%B2%A0%E3%81%A0%E2%89%A1%E2%94%94%28%E2%94%90%E5%8D%8D%5Eo%5E%29%E5%8D%8D">小ネタで勝負だ≡└(┐卍^o^)卍</h3>
+                </div>
+      </div><div class="content" id="slide-3"><div class="container">
+                  <h1 id="%E5%88%9D%E3%82%81%E3%81%AB">初めに</h1><p><span class="red">Typesafe Activator 1.0</span> 公開おめでとうございます ٩(๑╹ω╹๑)۶
+</p><p>brew にも登録されています.
+</p><p>(とは言いつつ僕はまだ弄っていません…)
+</p>
+                </div>
+      </div><div class="content" id="slide-4"><div class="container">
+                  <h1 id="Typesafe+Activator%E3%81%A3%E3%81%A6%EF%BC%9F">Typesafe Activatorって？</h1><ul><li>Typesafe Activatorは、JavaおよびScala開発者向けの開発支援ツール
+</li><li>プロジェクト作成 や テストが出来る.
+</li><li>sbt と giter8 をひとまとめにした感じ(実際はもっと色々機能がある).
+</li></ul><p>引用:<a  href="http://sourceforge.jp/magazine/13/09/25/160000">SourceForgeによる紹介</a>
+</p>
+                </div>
+      </div><div class="content" id="slide-5"><div class="container">
+                  <h1 id="%E3%81%A1%E3%82%87%E3%81%A3%E3%81%A8%E8%A7%A6%E3%81%A3%E3%81%A6%E6%80%9D%E3%81%A3%E3%81%9F%E3%81%93%E3%81%A8">ちょっと触って思ったこと</h1><p>ほんのちょっとしか触っていませんが…
+</p>
+                </div>
+      </div><div class="content" id="slide-6"><div class="container">
+                  <h1 id="%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%81%8C%E8%B6%B3%E3%82%8A%E3%81%AA%E3%81%84">テンプレートが足りない</h1><ul><li>プロジェクトのテンプレートが少ない…
+</li><li>現在でも29種類あるらしいが、ちょっと足りない.
+</li><li>具体的には Scalatra のテンプレートがない
+</li></ul><p><a  href="http://typesafe.com/activator/templates">-&gt; テンプレート一覧</a>
+</p>
+                </div>
+      </div><div class="content" id="slide-7"><div class="container">
+                  <h1 id="%E7%8F%BE%E4%BB%A3%E4%BA%BA%E3%81%8C%E6%8A%B1%E3%81%88%E3%82%8B%E5%95%8F%E9%A1%8C">現代人が抱える問題</h1><p>プロジェクトディレクトリが一発で作れないとやる気が出ない体になってしまった…
+</p>
+                </div>
+      </div><div class="content" id="slide-8"><div class="container">
+                  <h1 id="%E3%81%9D%E3%81%93%E3%81%A7+giter8">そこで giter8</h1>
+                </div>
+      </div><div class="content" id="slide-9"><div class="container">
+                  <h1 id="giter8%E3%81%A8%E3%81%AF%3F">giter8とは?</h1><ul><li>Scalaのプロジェクトを生成するコマンドラインツール.
+</li><li><code>play new</code>みたいなやつ
+</li><li><p>プロジェクトのテンプレートはgithubにある<br />
+</p><ul><li>現代的(⌯꒪͒ ૢ∀ ૢ꒪͒)
+</li></ul></li></ul><br />
+<p><a  href="https://github.com/n8han/giter8">-&gt; giter8</a>
+</p><p><a  href="http://blog.twiwt.org/e/f12c0f">-&gt; 日本語ドキュメント</a>
+</p>
+                </div>
+      </div><div class="content" id="slide-10"><div class="container">
+                  <h1 id="%E5%B0%8E%E5%85%A5%E6%96%B9%E6%B3%95">導入方法</h1><h2 id="brew+%E3%82%92%E4%BD%BF%E3%81%86">brew を使う</h2><pre><code class="prettyprint lang-sh">brew install giter8
+</code></pre><h2 id="Conscript+%E3%82%92%E4%BD%BF%E3%81%86">Conscript を使う</h2><pre><code class="prettyprint lang-sh"># conscriptを入れる
+curl https://raw.github.com/n8han/conscript/master/setup.sh | sh
+# conscript(csコマンド)でgiter8を入れる
+cs n8han/giter8
+</code></pre>
+                </div>
+      </div><div class="content" id="slide-11"><div class="container">
+                  <h1 id="%E4%BD%BF%E3%81%84%E6%96%B9%281%2F2%29">使い方(1/2)</h1><p>例えばScalatraのプロジェクトを作る場合は以下のコマンドを実行する.
+</p><pre><code class="prettyprint lang-sh">g8 scalatra/scalatra-sbt
+</code></pre><p>※ g8というのがgiter8のコマンドです
+</p>
+                </div>
+      </div><div class="content" id="slide-12"><div class="container">
+                  <h1 id="%E4%BD%BF%E3%81%84%E6%96%B9%282%2F2%29">使い方(2/2)</h1><p>色々聞かれるので回答する
+</p><pre><code class="">organization [com.example]:
+package [com.example.app]:
+name [My Scalatra Web App]:
+servlet_name [MyScalatraServlet]:
+scala_version [2.9.2]:
+version [0.1.0-SNAPSHOT]:
+</code></pre>
+                </div>
+      </div><div class="content" id="slide-13"><div class="container">
+                  <h1 id="%E3%81%A1%E3%81%AA%E3%81%BF%E3%81%AB">ちなみに</h1><p>Typesafe Activator にテンプレートを追加することも出来るのでそのうち充実するかも
+</p><p><a  href="http://typesafe.com/activator/template/contribute">http://typesafe.com/activator/template/contribute</a>
+</p>
+                </div>
+      </div><div class="content" id="slide-14"><div class="container">
+                  <h1 id="%E3%81%8A%E3%81%BE%E3%81%91+Conscript">おまけ Conscript</h1>
+                </div>
+      </div><div class="content" id="slide-15"><div class="container">
+                  <h1 id="Conscript+%E3%81%A8%E3%81%AF%EF%BC%9F">Conscript とは？</h1><ul><li>Scalaで作られたソフトウェアをインストール &amp; アップデートするためのツール
+</li><li>さっきのgiter8もConscriptを使ってインストールした.
+</li><li>このスライドを実行しているpicture-showというScala製のツールもConscriptを使ってインストールした.
+</li></ul><p><a  href="https://github.com/n8han/conscript">-&gt; Conscript</a>
+</p>
+                </div>
+      </div><div class="content" id="slide-16"><div class="container">
+                  <h1 id="%E5%B0%8E%E5%85%A5%E6%96%B9%E6%B3%95">導入方法</h1><pre><code class="prettyprint lang-sh">curl https://raw.github.com/n8han/conscript/master/setup.sh | sh
+</code></pre>
+                </div>
+      </div><div class="content" id="slide-17"><div class="container">
+                  <h1 id="%E4%BD%BF%E3%81%84%E6%96%B9">使い方</h1><pre><code class="prettyprint lang-sh"># giter8 をインストール
+cs n8han/giter8
+
+# picture-show をインストール
+cs softprops/picture-show
+</code></pre><p>※csというのがconscriptのコマンドです
+</p>
+                </div>
+      </div><div class="content" id="slide-18"><div class="container">
+                  <h1 id="%E3%82%82%E3%81%B2%E3%81%A8%E3%81%A4%E3%81%8A%E3%81%BE%E3%81%91%E3%81%AB+scala-notebook">もひとつおまけに scala-notebook</h1>
+                </div>
+      </div><div class="content" id="slide-19"><div class="container">
+                  <h1 id="scala-notebook+%E3%81%A8%E3%81%AF%3F">scala-notebook とは?</h1><h2 id="A+more+friendly%2C++browser-based+interactive+Scala+prompt+%28REPL%29.">A more friendly,  browser-based interactive Scala prompt (REPL).</h2><br />
+<h2 id="%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6%E3%81%A7%E5%8B%95%E3%81%8FREPL">ブラウザで動くREPL</h2><p><a  href="https://github.com/Bridgewater/scala-notebook">-&gt; scala-notebook</a>
+</p>
+                </div>
+      </div><div class="content" id="slide-20"><div class="container">
+                  <h1 id="%E5%B0%8E%E5%85%A5%E6%96%B9%E6%B3%95">導入方法</h1><pre><code class="prettyprint lang-sh">git clone https://github.com/Bridgewater/scala-notebook.git
+cd scala-notebook
+sbt
+
+# sbt内で
+&gt; project server
+&gt; run
+</code></pre>
+                </div>
+      </div><div class="content" id="slide-21"><div class="container">
+                  <h1 id="%E8%B5%B7%E5%8B%95%EF%BC%81">起動！</h1><img src="sectiona/scala-notebook.png">
+
+                </div>
+      </div><div class="content" id="slide-22"><div class="container">
+                  <h1 id="%E4%BB%A5%E4%B8%8A%E3%81%A7%E3%81%99">以上です</h1>
+                </div>
+      </div>
+          </div>
+        </div>
+        
+      </body>
+    </html>
