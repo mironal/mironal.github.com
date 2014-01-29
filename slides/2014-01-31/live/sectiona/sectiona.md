@@ -4,6 +4,8 @@
 
 <p class="right">Live Coding de Night #libcodingso</p>
 
+<img src="sectiona/ta-n.jpg">
+
 !SLIDE
 
 # 提供 : [合同会社コベリン](http://covelline.com/)
@@ -14,15 +16,15 @@
 
 feather for Twitter
 
-<img src="sectiona/feather_banner.jpg" width="1000px">
+<img src="sectiona/feather_banner.jpg" width="1000">
 
 よろしく！！ (੭•̀ᴗ•̀)
 
 !SLIDE
 
 <center>
-<img src="sectiona/1-Timeline.png" width="400px">
-<img src="sectiona/画像付きTweet詳細表示画面.jpg" width="400px">
+<img src="sectiona/1-Timeline.png" width="400">
+<img src="sectiona/画像付きTweet詳細表示画面.jpg" width="400">
 </center>
 
 !SLIDE
@@ -60,7 +62,7 @@ feather for Twitter
 
 # テストしてますか？
 
-<img src="sectiona/junit.jpg" height="400px">
+<img src="sectiona/junit.jpg" height="400">
 
 !SLIDE
 
@@ -70,7 +72,7 @@ feather for Twitter
 
 # レビューしてますか？
 
-<img src="sectiona/review.png" height="500px">
+<img src="sectiona/review.png" height="500">
 
 !SLIDE
 
@@ -80,7 +82,7 @@ feather for Twitter
 
 # Github 使ってますか？
 
-<img src="sectiona/octcat.png" width="300px">
+<img src="sectiona/octcat.png" width="300">
 
 !SLIDE
 
@@ -90,7 +92,7 @@ feather for Twitter
 
 # Jenkins してますか？
 
-<img src="sectiona/jenkins2.png" width="500px">
+<img src="sectiona/jenkins2.png" width="500">
 
 !SLIDE
 
@@ -104,7 +106,7 @@ feather for Twitter
 
 # TestFlight 使ってますか？
 
-<img src="sectiona/testflight-logo.png" width="300px">
+<img src="sectiona/testflight-logo.png" width="300">
 
 !SLIDE
 
@@ -112,12 +114,13 @@ feather for Twitter
 
 !SLIDE
 
-# してます！ <span class="blue">それがコベリン！！</span>
+# 全部やってます！
 
-## 説明しよう！！
+# <span class="blue">それがコベリン！！</span>
 
-## コベリンの開発環境を！！
+## コベリンの開発環境を一挙公開 ！！
 
+<img  src="sectiona/nagisa.jpg" width="800">
 
 !SLIDE
 
@@ -125,7 +128,7 @@ feather for Twitter
 
 <br />
 
-- ユーザ/社員からの要望
+- ユーザ / 社員からの要望
 
 ↓
 
@@ -137,39 +140,46 @@ feather for Twitter
 
 ↓
 
-- 開発 (コーディング)
+- 開発 ← <span class="v-small">ここを詳しく説明</span>
 
 !SLIDE
 
 <center>
-<img src="sectiona/covelline_work_flow.png" width="1000px">
+<img src="sectiona/covelline_work_flow.png" width="1000">
 </center>
 
 !SLIDE
 
 ## 弊社の Jenkins サーバ
 
-<img src="sectiona/server.jpg" width="800px">
+<img src="sectiona/server.jpg" width="800">
 
 !SLIDE
 
-## <span class="red">それでは業務を開始します ヽ(•̀ω•́ )ゝ✧</span>
+## 会場の皆さん、長らくお待たせいたしました
 
+## <span class="red">それでは<span class="line-through">業務を</span>
+# <span class="red">ライブを開始します ヽ(•̀ω•́ )ゝ✧</span>
+
+<img src="sectiona/dev.jpg">
 
 !SLIDE
 
-##  アプリ公開直後...
+## そう... それは
+
+##  アプリ公開直後のことだった...
+
+<img src="sectiona/Timeline_v1.0.2.png">
 
 !SLIDE
 
 ## 要望殺到！ (イメージです)
 
-<img src="sectiona/sutema.png" height="600px">
+<img src="sectiona/sutema.png" height="700">
 
 !SLIDE
 
 # インラインプレビュー
-
 
 <img src="sectiona/inline.png">
 
@@ -179,17 +189,21 @@ feather for Twitter
 
 ## (っ'ヮ'c)
 
+<img src="sectiona/10.jpg">
+
 !SLIDE
 
 # デザイナに頼もう
 
 ## (⌯꒪͒ ૢ∀ ૢ꒪͒)
 
+<img src="sectiona/designer.jpg">
+
 !SLIDE
 
 # Issue を作っておこう
 
-## -=≡( ◠‿◠ )」
+## -=≡( ◠‿◠ )」 [Github]
 
 
 
