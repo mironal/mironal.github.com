@@ -1,0 +1,145 @@
+<html>
+      <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <title>新宿Scala座 3月号</title>
+        <link type="text/css" rel="stylesheet" href="assets/css/show.css" />
+        <link type="text/css" rel="stylesheet" href="assets/css/prettify.css" />
+        <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+        <script type="text/javascript" src="assets/js/show.js"></script>
+        <script type="text/javascript" src="assets/js/prettify/prettify.js"></script>
+        <script type="text/javascript" src="assets/js/prettify/lang-apollo.js"></script><script type="text/javascript" src="assets/js/prettify/lang-css.js"></script><script type="text/javascript" src="assets/js/prettify/lang-hs.js"></script><script type="text/javascript" src="assets/js/prettify/lang-lisp.js"></script><script type="text/javascript" src="assets/js/prettify/lang-lua.js"></script><script type="text/javascript" src="assets/js/prettify/lang-ml.js"></script><script type="text/javascript" src="assets/js/prettify/lang-proto.js"></script><script type="text/javascript" src="assets/js/prettify/lang-scala.js"></script><script type="text/javascript" src="assets/js/prettify/lang-sql.js"></script><script type="text/javascript" src="assets/js/prettify/lang-sql.js"></script><script type="text/javascript" src="assets/js/prettify/lang-vb.js"></script><script type="text/javascript" src="assets/js/prettify/lang-vhdl.js"></script><script type="text/javascript" src="assets/js/prettify/lang-wiki.js"></script><script type="text/javascript" src="assets/js/prettify/lang-yaml.js"></script><link type="text/css" rel="stylesheet" href="css/custom.css?1394855412971" />
+      <script type="text/javascript"><!--
+        window.onload=function() { prettyPrint(); };
+      --></script>
+      </head>
+      <body>
+        <div id="slides">
+          <div id="reel">
+            <div class="content" id="slide-0"><div class="container">
+                  <h1 id="Scala+%E3%81%A8+Haskell">Scala と Haskell</h1><h2 id="%E6%80%96%E3%81%8F%E3%81%AA%E3%82%8C%E3%81%AA%E3%81%84">怖くなれない</h2>
+                </div>
+      </div><div class="content" id="slide-1"><div class="container">
+                  <h2 id="%3Cspan+class%3D%22v-small+blue%22%3Ecovelline%2C+LLC.%3C%2Fspan%3E"><a  href="https://twitter.com/mironal">@mironal -&gt; 山口勝也</a> <span class="v-small blue">covelline, LLC.</span></h2><img src="http://mironal.github.io/images/twitter_icon.jpeg" width="200">
+<br />
+<p><a  href="http://mironal-memo.blogspot.jp">Blog -&gt; http://mironal-memo.blogspot.jp</a>
+</p><p><a  href="http://www.flickr.com/photos/mironal">Flickr -&gt; http://www.flickr.com/photos/mironal</a>
+</p><p><a  href="https://github.com/mironal">GitHub -&gt; https://github.com/mironal</a>
+</p><p><a  href="http://mironal.github.io">勉強会の資料達 -&gt; http://mironal.github.io</a>
+</p>
+                </div>
+      </div><div class="content" id="slide-2"><div class="container">
+                  <h2 id="%3Cspan+class%3D%22blue%22%3E1%E6%9C%88+%28%E5%89%8D%E5%9B%9E%29%3C%2Fspan%3E"><span class="blue">1月 (前回)</span></h2><h1 id="%E7%A5%9D+%E2%9C%A9%C2%A8%C2%A8%E2%9C%A9">祝 ✩<em>⋆¸¸.•</em>¨<em>꒰⁎˃ ॢꇴ ॢ˂⁎꒱</em>¨<em>•.¸¸⋆</em>✩</h1><h2 id="%3Cspan+class%3D%22blue%22%3E%E3%82%A2%E3%83%97%E3%83%AA+%E3%83%AA%E3%83%AA%E3%83%BC%E3%82%B9%3C%2Fspan%3E+%28%E0%A9%AD%E0%A5%81+%E2%80%BA%CF%89%E2%80%B9+%29%E0%A9%AD%E0%A5%81%E2%81%BE%E2%81%BE%E2%99%A1"><span class="blue">アプリ リリース</span> (੭ु ›ω‹ )੭ु⁾⁾♡</h2><br />
+<a href="http://covelline.com/feather/"><img src="sectiona/feather_banner.jpg" width="1000"></a>
+
+                </div>
+      </div><div class="content" id="slide-3"><div class="container">
+                  <h1 id="%E7%A5%9D+%E2%9C%A9%C2%A8%C2%A8%E2%9C%A9">祝 ✩<em>⋆¸¸.•</em>¨<em>꒰⁎˃ ॢꇴ ॢ˂⁎꒱</em>¨<em>•.¸¸⋆</em>✩</h1><h2 id="SNS+%E3%82%AB%E3%83%86%E3%82%B4%E3%83%AA+%3Cspan+class%3D%22red%22%3E1%E4%BD%8D%3C%2Fspan%3E+%28%E0%A9%AD%E2%80%A2%CC%80%E1%B4%97%E2%80%A2%CC%80%29">SNS カテゴリ <span class="red">1位</span> (੭•̀ᴗ•̀)</h2><img src="sectiona/feather.JPG" width="400">
+
+                </div>
+      </div><div class="content" id="slide-4"><div class="container">
+                  <h2 id="%E6%9C%AC%E9%A1%8C%3A+Scala+%E3%81%A8+Haskell">本題: Scala と Haskell</h2><ol><li>Haskell も勉強しとくといいらしいぞ！
+</li><li>すごいH本を買った
+</li><li>途中まで読んだ
+</li><li>放置
+</li><li>重い腰が上がりかけている &lt;- <span class="red">ｲﾏｺｺ</span>
+</li></ol>
+                </div>
+      </div><div class="content" id="slide-5"><div class="container">
+                  <img src="sectiona/haskell.jpg" width="400">
+
+                </div>
+      </div><div class="content" id="slide-6"><div class="container">
+                  <h2 id="%E6%9C%80%E5%88%9D%E3%81%8B%E3%82%89%E8%AA%AD%E3%81%BF%E3%81%AA%E3%81%8A%E3%81%99">最初から読みなおす</h2><ul><li>10/15 章まで読んだ気がしたけど、最初から
+</li><li>新宿Scala座のある日の午前中に読む!
+</li><li>1000回目あたりで読み終わるのでは？
+</li></ul>
+                </div>
+      </div><div class="content" id="slide-7"><div class="container">
+                  <h2 id="%E3%81%8A%E3%81%9D%E3%82%89%E3%81%8F%E4%BB%8A%E6%97%A5%E3%81%AF%E2%80%A6">おそらく今日は…</h2><ul><li>環境構築
+</li><li>基本的な文法をおさらい
+</li></ul><p>Haskell のコードを読んだことがない人を対象とするぐらい初歩的なやつ
+</p>
+                </div>
+      </div><div class="content" id="slide-8"><div class="container">
+                  <h2 id="%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89">環境構築</h2><p>Mac なら
+</p><pre><code class="">brew update
+brew install ghc
+brew install haskell-platform
+</code></pre><br />
+<p>30分ぐらいかかる₍₍ (ง ˙ω˙)ว ⁾⁾
+</p><span class="v-small">ghc: The Glasgow Haskell Compiler </span>
+
+                </div>
+      </div><div class="content" id="slide-9"><div class="container">
+                  <h2 id="%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%97%E3%83%AA%E3%82%BF%E3%81%AE%E8%B5%B7%E5%8B%95">インタプリタの起動</h2><p>Scala の REPL と同じようにコンソール上で色々実行できるインタプリタがある.
+</p><pre><code class="prettyprint lang-sh">ghci
+</code></pre><p>と実行すると起動する.
+</p>
+                </div>
+      </div><div class="content" id="slide-10"><div class="container">
+                  <h2 id="%E9%96%A2%E6%95%B0%E3%81%AE%E5%AE%9F%E8%A1%8C">関数の実行</h2><pre><code class="prettyprint lang-haskell">Prelude&gt; 1 + 2
+3
+</code></pre><pre><code class="prettyprint lang-haskell">Prelude&gt; succ 1
+2
+Prelude&gt; succ 4
+5
+</code></pre><p>1 + 2 も関数を実行しているの?
+</p>
+                </div>
+      </div><div class="content" id="slide-11"><div class="container">
+                  <p><span class="red">+</span> と言うのは2つの引数を受け取り <br />
+それらを加算する<span class="red">中置関数</span>です.
+</p><br />
+<p>ちなみに関数界隈では <br />
+<span class="blue">関数を実行する</span> というよりも<br />
+<span class="blue">関数を適用する</span>という言い方をします
+</p>
+                </div>
+      </div><div class="content" id="slide-12"><div class="container">
+                  <h2 id="%E4%B8%AD%E7%BD%AE%E9%96%A2%E6%95%B0%3F+%E3%81%A8+%E5%89%8D%E7%BD%AE%E9%96%A2%E6%95%B0%3F">中置関数? と 前置関数?</h2><h3 id="%E4%B8%AD%E7%BD%AE%E9%96%A2%E6%95%B0">中置関数</h3><pre><code class="prettyprint lang-haskell">引数1 関数名 引数2
+1 + 2
+
+</code></pre><h3 id="%E5%89%8D%E7%BD%AE%E9%96%A2%E6%95%B0">前置関数</h3><pre><code class="prettyprint lang-haskell">関数名 引数 ...
+succ 1
+div 2 1
+</code></pre>
+                </div>
+      </div><div class="content" id="slide-13"><div class="container">
+                  <h2 id="%E5%89%8D%E7%BD%AE%E9%96%A2%E6%95%B0+-%3E+%E4%B8%AD%E7%BD%AE%E9%96%A2%E6%95%B0">前置関数 -&gt; 中置関数</h2><p><code>div 2 1</code> は <code>1/2</code> なのか <code> 2/1</code> なのか分かり難い…
+</p><p>なので
+</p><pre><code class="prettyprint lang-haskell">2 `div` 1
+</code></pre><p>とも書ける.
+</p><p>※ div は2つの整数を除算を行う関数
+</p>
+                </div>
+      </div><div class="content" id="slide-14"><div class="container">
+                  <h2 id="%E4%B8%AD%E7%BD%AE%E9%96%A2%E6%95%B0+-%3E+%E5%89%8D%E7%BD%AE%E9%96%A2%E6%95%B0%3F">中置関数 -&gt; 前置関数?</h2><pre><code class="prettyprint lang-haskell">Prelude&gt; (+) 1 2
+</code></pre><span class="v-small">間違ってるかもしれないけど</span>
+<p>これは部分適用を利用していて、詳細に書くと
+</p><pre><code class="prettyprint lang-haskell">Prelude&gt; (((+) 1) 2)
+</code></pre><p>ということをしていて、
+</p><p>関数 ”+” に “1” を部分適用した関数に “2” を適用している
+</p>
+                </div>
+      </div><div class="content" id="slide-15"><div class="container">
+                  <h2 id="%E6%99%82%E9%96%93%E5%88%87%E3%82%8C%E3%81%AA%E3%81%AE%E3%81%A7%E3%81%8A%E3%82%8F%E3%82%8A++%E2%81%9D%28%E0%A5%83%CA%BE%CC%81%EA%92%B3%CA%BF%CC%80+%E0%A5%83%E3%80%80%29%E0%A5%81%E2%81%9D">時間切れなのでおわり  ⁝(ृʾ́꒳ʿ̀ ृ　)ु⁝</h2><br />
+<p>Scala と Haskell の書き方の違いを比較とかしたかったけど、そこまでいけなかった…
+</p><br />
+<p>次回は関数定義の方法とかをやりたい…
+</p>
+                </div>
+      </div><div class="content" id="slide-16"><div class="container">
+                  <h2 id="%E7%AA%81%E7%84%B6%E3%81%AE%E5%AE%A3%E4%BC%9D">突然の宣伝</h2><span class="v-small">この前、おじゃまさせてもらったのですが、異空間で面白かったです</span>
+<img  src="sectiona/tento-banner-1.gif" width="800">
+<p><span class="blue">日本初の小中学生向け</span> <br />
+ICT/プログラミング学習機関
+</p><p><a  href="http://www.tento-net.com/">http://www.tento-net.com/</a>
+</p><p>講師募集中！！
+</p>
+                </div>
+      </div>
+          </div>
+        </div>
+        
+      </body>
+    </html>
