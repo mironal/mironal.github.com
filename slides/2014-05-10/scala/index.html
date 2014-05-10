@@ -1,0 +1,215 @@
+<html>
+      <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <title>新宿Scala座 5月号</title>
+        <link type="text/css" rel="stylesheet" href="assets/css/show.css" />
+        <link type="text/css" rel="stylesheet" href="assets/css/prettify.css" />
+        <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+        <script type="text/javascript" src="assets/js/show.js"></script>
+        <script type="text/javascript" src="assets/js/prettify/prettify.js"></script>
+        <script type="text/javascript" src="assets/js/prettify/lang-apollo.js"></script><script type="text/javascript" src="assets/js/prettify/lang-css.js"></script><script type="text/javascript" src="assets/js/prettify/lang-hs.js"></script><script type="text/javascript" src="assets/js/prettify/lang-lisp.js"></script><script type="text/javascript" src="assets/js/prettify/lang-lua.js"></script><script type="text/javascript" src="assets/js/prettify/lang-ml.js"></script><script type="text/javascript" src="assets/js/prettify/lang-proto.js"></script><script type="text/javascript" src="assets/js/prettify/lang-scala.js"></script><script type="text/javascript" src="assets/js/prettify/lang-sql.js"></script><script type="text/javascript" src="assets/js/prettify/lang-sql.js"></script><script type="text/javascript" src="assets/js/prettify/lang-vb.js"></script><script type="text/javascript" src="assets/js/prettify/lang-vhdl.js"></script><script type="text/javascript" src="assets/js/prettify/lang-wiki.js"></script><script type="text/javascript" src="assets/js/prettify/lang-yaml.js"></script><link type="text/css" rel="stylesheet" href="css/custom.css?1399696796124" />
+      <script type="text/javascript"><!--
+        window.onload=function() { prettyPrint(); };
+      --></script>
+      </head>
+      <body>
+        <div id="slides">
+          <div id="reel">
+            <div class="content" id="slide-0"><div class="container">
+                  <h1 id="Scala+%E3%81%A8+Haskell">Scala と Haskell</h1><h2 id="%3Cspan+class%3D%22v-small%22%3EHaskell+%E3%81%AE%3C%2Fspan%3E++%3Cspan+class%3D%22blue%22%3EFunctor%3C%2Fspan%3E"><span class="v-small">Haskell の</span>  <span class="blue">Functor</span></h2><p>眠くなりそうな内容だ…
+</p>
+                </div>
+      </div><div class="content" id="slide-1"><div class="container">
+                  <h2 id="%3Cspan+class%3D%22v-small+blue%22%3Ecovelline%2C+LLC.%3C%2Fspan%3E"><a  href="https://twitter.com/mironal">@mironal -&gt; 山口勝也</a> <span class="v-small blue">covelline, LLC.</span></h2><img src="http://mironal.github.io/images/twitter_icon.jpeg" width="200">
+<br />
+<p><a  href="http://mironal-memo.blogspot.jp">Blog -&gt; http://mironal-memo.blogspot.jp</a>
+</p><p><a  href="http://www.flickr.com/photos/mironal">Flickr -&gt; http://www.flickr.com/photos/mironal</a>
+</p><p><a  href="https://github.com/mironal">GitHub -&gt; https://github.com/mironal</a>
+</p><p><a  href="http://mironal.github.io">勉強会の資料達 -&gt; http://mironal.github.io</a>
+</p>
+                </div>
+      </div><div class="content" id="slide-2"><div class="container">
+                  <h2 id="%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE">参考文献</h2><img src="sectiona/haskell.jpg" width="400">
+
+                </div>
+      </div><div class="content" id="slide-3"><div class="container">
+                  <p>前回に引き続き Haskell をﾁﾏﾁﾏ勉強して、その内容を発表するよー
+</p><p>でも、色々飛ばして今日は <span class="blue">Functor</span> やります
+</p>
+                </div>
+      </div><div class="content" id="slide-4"><div class="container">
+                  <h2 id="%E3%81%A8%E3%82%8A%E3%81%82%E3%81%88%E3%81%9A%E3%81%AE%E7%9B%AE%E6%A8%99">とりあえずの目標</h2><p><span class="red">Monad</span> をそれとなく理解したい…
+</p>
+                </div>
+      </div><div class="content" id="slide-5"><div class="container">
+                  <h2 id="%E4%BB%8A%E3%81%AE%E5%83%95%E3%81%AE%E7%9F%A5%E8%AD%98">今の僕の知識</h2><h3 id="%3Cspan+class%3D%22red%22%3EMonad%3C%2Fspan%3E+%3F%3F%3F"><span class="red">Monad</span> ???</h3><ul><li><span class="red">Monad</span> 則を満たすもの
+</li><li>List Monad とか、Maybe Monad とか色々あるらしい…
+</li></ul><h3 id="Monad+%E5%89%87%E3%81%8C%E7%90%86%E8%A7%A3%E3%81%A7%E3%81%8D%E3%81%A6%E3%81%84%E3%81%AA%E3%81%84">Monad 則が理解できていない</h3><ul><li>関数型でプログラミングしている時に「今、<span class="red">Monad</span> 使ってる！」って意識できるようになりたい.
+</li><li>たぶん今は知らないうちに使ってる
+</li></ul>
+                </div>
+      </div><div class="content" id="slide-6"><div class="container">
+                  <h3 id="%E3%81%99%E3%81%94%E3%81%84H%E6%9C%AC%E3%81%AE%E6%A7%8B%E6%88%90%E3%81%8C">すごいH本の構成が</h3><ol><li>Functor
+</li><li>Applicative Functor
+</li><li>Monoid
+</li><li>Monad
+</li></ol><h3 id="%E3%81%A8%E3%81%AA%E3%81%A3%E3%81%A6%E3%81%84%E3%82%8B%E3%81%AE%E3%81%A7++%3Cspan+class%3D%22blue%22%3EFunctor%3C%2Fspan%3E+%E3%81%AF+%3Cspan+class%3D%22red%22%3EMonad%3C%2Fspan%3E+%E3%81%B8%E3%81%AE%E5%85%A5%E3%82%8A%E5%8F%A3">となっているので  <span class="blue">Functor</span> は <span class="red">Monad</span> への入り口</h3><p>だと思った.
+</p><h3 id="%E3%81%A3%E3%81%A6%E3%81%93%E3%81%A8%E3%81%A7%E6%97%A9%E9%80%9F+%3Cspan+class%3D%22blue%22%3EFunctor%3C%2Fspan%3E+%28%E2%95%AD%E2%98%9E%E2%80%A2%CC%81%E2%8D%9B%E2%80%A2%CC%80%29%E2%95%AD%E2%98%9E">ってことで早速 <span class="blue">Functor</span> (╭☞•́⍛•̀)╭☞</h3>
+                </div>
+      </div><div class="content" id="slide-7"><div class="container">
+                  <h3 id="Functor">Functor</h3><p>よくあるイメージ
+</p><ul><li>Functor は箱の中に入っている値に関数を適用して箱に入ったまま返す.
+</li><li>箱の中身だけを変更する方法
+</li></ul><pre><code class="prettyprint lang-scala">Option(1).map(i =&gt; s&quot;$i&quot;)
+</code></pre><p><code>Option[Int]</code> から <code>Option[String]</code> に変わった
+</p>
+                </div>
+      </div><div class="content" id="slide-8"><div class="container">
+                  <h1 id="Functor">Functor</h1><h3 id="Haskell+%E3%81%AE%E5%9E%8B%E3%82%AF%E3%83%A9%E3%82%B9%E3%81%AE1%E3%81%A4.">Haskell の型クラスの1つ.</h3><pre><code class="prettyprint lang-haskell">class Functor f where
+  fmap :: (a -&gt; b) -&gt; f a -&gt; f b
+</code></pre><br />
+<br />
+<p>( ˘ω˘ ) 味わい深い…
+</p>
+                </div>
+      </div><div class="content" id="slide-9"><div class="container">
+                  <pre><code class="prettyprint lang-haskell">class Functor f where
+  fmap :: (a -&gt; b) -&gt; f a -&gt; f b
+</code></pre><ul><li>型クラス Functor は関数 fmap を持っている
+</li><li><p>fmap は 2つの引数をとる関数
+</p><ol><li>“型a から型b への関数”
+</li><li>“型a に適用されたファンクター値”
+</li></ol></li><li>戻り値は “型b に適用されたファンクター値”
+</li></ul><p>※ Scala でいうと “型a に適用されたファンクター値” というのは f が <code>Option</code> , a が <code>1: Int</code> だとしたら <code>Option(1)</code> ということ
+</p>
+                </div>
+      </div><div class="content" id="slide-10"><div class="container">
+                  <h3 id="%E5%85%A8%E7%84%B6%E5%88%86%E3%81%8B%E3%82%89%E3%82%93">全然分からん</h3><p>まず何が書いてあるか全然わからないので、 <span class="blue">Functor</span>の型クラスをネタに Haskell について学びます.
+</p>
+                </div>
+      </div><div class="content" id="slide-11"><div class="container">
+                  <h2 id="%3Csmall%3E%E3%81%BE%E3%81%9A%E3%81%AF%3C%2Fsmall%3E+%E9%96%A2%E6%95%B0%E5%AE%A3%E8%A8%80"><small>まずは</small> 関数宣言</h2><p>hello という名前の String を1つ引数に取って  String を返す関数
+</p><pre><code class="prettyprint lang-haskell">hello :: String -&gt; String
+hello name = &quot;Hello &quot; ++ name
+</code></pre><p>ぬまさんにだけ特別な挨拶をしたい
+</p><pre><code class="prettyprint lang-haskell">hello :: String -&gt; String
+hello &quot;numa&quot; = &quot;(⑅ ☞三☞´◔‿ゝ◔`)☞三☞ｼｭｯｼｭｯｼｭｯｼｭ)ﾟдﾟ )つ ぬまさん&quot;
+hello name = &quot;Hello &quot; ++ name
+</code></pre><p>パターンマッチがそのまま使える
+</p>
+                </div>
+      </div><div class="content" id="slide-12"><div class="container">
+                  <p>Int を2つ引数に取って、加算した値を返す関数
+</p><pre><code class="prettyprint lang-haskell">add2 :: Int -&gt; Int -&gt; Int
+add2 x y = x + y
+</code></pre><p>空の List を与えるとエラーが発生する sum
+</p><pre><code class="prettyprint lang-haskell">sumNum :: Num a =&gt; [a] -&gt; a
+sumNum [] = error &quot;empty!&quot;
+sumNum x = sum x
+</code></pre><p>※ <code>Num a =&gt; [a] -&gt; a</code> 数値っぽい型 “a” の リスト”[a]” を取ってその合計を返す
+</p>
+                </div>
+      </div><div class="content" id="slide-13"><div class="container">
+                  <h2 id="%E5%9E%8B%E3%82%AF%E3%83%A9%E3%82%B9">型クラス</h2><ul><li>インターフェース
+</li><li>実装は型クラスのインスタンスである型が実装する
+</li></ul><h2 id="ex%29">ex)</h2><ul><li>Eq 型クラスは 等値を比較するインターフェースを定義
+</li><li>比較する方法は 各々の型(Int, Stringなど)で定義する
+</li></ul><pre><code class="prettyprint lang-haskell">class Eq a where
+  (==) :: a -&gt; a -&gt; Bool
+  (/=) :: a -&gt; a -&gt; Bool
+</code></pre>
+                </div>
+      </div><div class="content" id="slide-14"><div class="container">
+                  <p>このような信号機のライトの種類を示す型を比較可能にする
+</p><pre><code class="prettyprint lang-haskell">data TrafficLight = Red | Yellow | Green
+</code></pre><p>TrafficLight を型クラスのインスタンスにする
+</p><pre><code class="prettyprint lang-haskell">instance Eq TrafficLight where
+  Red == Red = True
+  Green == Green = True
+  Yellow == Yellow = True
+  _ == _ = False
+</code></pre>
+                </div>
+      </div><div class="content" id="slide-15"><div class="container">
+                  <p>Functor に戻ります
+</p>
+                </div>
+      </div><div class="content" id="slide-16"><div class="container">
+                  <h2 id="%E7%B0%A1%E5%8D%98%E3%81%AA+Functor+%E3%81%AE%E4%BE%8B">簡単な Functor の例</h2><h1 id="Maybe">Maybe</h1><ul><li>Scala の Option
+</li><li>Scala -&gt; Haskell
+</li><li>Some -&gt; Just
+</li><li>None -&gt; Nothing
+</li></ul><pre><code class="">Prelude&gt; :info Maybe
+data Maybe a = Nothing | Just a         -- Defined in `Data.Maybe'
+instance Eq a =&gt; Eq (Maybe a) -- Defined in `Data.Maybe'
+instance Monad Maybe -- Defined in `Data.Maybe'
+instance Functor Maybe -- Defined in `Data.Maybe'
+instance Ord a =&gt; Ord (Maybe a) -- Defined in `Data.Maybe'
+instance Read a =&gt; Read (Maybe a) -- Defined in `GHC.Read'
+instance Show a =&gt; Show (Maybe a) -- Defined in `GHC.Show'
+</code></pre>
+                </div>
+      </div><div class="content" id="slide-17"><div class="container">
+                  <h2 id="instance">instance</h2><pre><code class="prettyprint lang-haskell">instance Functor Maybe where
+  fmap f (Just x) = Just (f x)
+  fmap f Nothing = Nothing
+</code></pre><p>fは (a -&gt; b) な関数
+</p><p><code>fmap f (Just x) = Just (f x)</code> は Just x の x に関数 fを適用して もっかい Just の中に入れて返す
+</p><ul><li>確かに箱の中身だけを変更してるっぽい
+</li></ul>
+                </div>
+      </div><div class="content" id="slide-18"><div class="container">
+                  <h2 id="%E4%BB%96%E3%81%AB%E3%81%AF%E3%81%A9%E3%82%93%E3%81%AA+Functor+%E3%81%8C%E3%81%82%E3%82%8B%E3%81%AE%EF%BC%9F">他にはどんな Functor があるの？</h2><p>Functor 則を満たせば何でも良い
+</p><pre><code class="">Functor 則 その1: fmap id == id
+Functor 則 その2: fmap (f . g) == fmap f . fmap g
+</code></pre><ul><li><code>id</code> は受け取った値をそのまま返す関数
+</li></ul><pre><code class="prettyprint lang-haskell">id 1
+1
+id &quot;a&quot;
+&quot;a&quot;
+</code></pre><ul><li>. は関数の合成
+</li></ul>
+                </div>
+      </div><div class="content" id="slide-19"><div class="container">
+                  <h3 id="Maybe+%E3%81%A7+Functor+%E5%89%87%E3%82%92%E8%A9%A6%E3%81%97%E3%81%A6%E3%81%BF%E3%82%8B">Maybe で Functor 則を試してみる</h3><h4 id="Functor+%E5%89%87+%E3%81%9D%E3%81%AE1">Functor 則 その1</h4><pre><code class="">&gt; fmap id (Just 2)
+Just 2
+&gt; id (Just 2)
+Just 2
+</code></pre><h4 id="Functor+%E5%89%87+%E3%81%9D%E3%81%AE2">Functor 則 その2</h4><pre><code class="">&gt; fmap ((*2) . (*3)) (Just 2)
+Just 12
+&gt; fmap (*2) (fmap (*3) (Just 2))
+Just 12
+</code></pre><p>満たしてそう (੭•̀ᴗ•̀)
+</p>
+                </div>
+      </div><div class="content" id="slide-20"><div class="container">
+                  <h3 id="List+%E3%81%A7+Functor+%E5%89%87%E3%82%92%E8%A9%A6%E3%81%97%E3%81%A6%E3%81%BF%E3%82%8B">List で Functor 則を試してみる</h3><h4 id="Functor+%E5%89%87+%E3%81%9D%E3%81%AE1">Functor 則 その1</h4><pre><code class="">&gt; fmap id [1, 2, 3]
+[1, 2, 3]
+&gt; id [1, 2, 3]
+[1, 2, 3]
+</code></pre><h4 id="Functor+%E5%89%87+%E3%81%9D%E3%81%AE2">Functor 則 その2</h4><pre><code class="">&gt; fmap ((*2) . (*3)) [1, 2, 3]
+[6, 12, 18]
+&gt; fmap (*2) (fmap (*3) [1, 2, 3])
+[6, 12, 18]
+</code></pre><p>満たしてそう (੭•̀ᴗ•̀)
+</p>
+                </div>
+      </div><div class="content" id="slide-21"><div class="container">
+                  <p>時間切れ
+</p><ul><li>Functor は汎用性の高い概念なのでｽｯｷﾘと理解するには脳が足りなかった
+</li><li>Functor 則を満たしていると何が嬉しいのかをもうちょっと調べたい
+</li></ul><h3 id="%E3%81%A1%E3%81%AA%E3%81%BF%E3%81%AB">ちなみに</h3><ul><li>Functor 則を守っていない Functor のインスタンスを作ることも出来るので注意！
+</li><li>fmap を定義すれば Functor になれるというわけではない
+</li><li>fmap は注意深く実装すること
+</li></ul>
+                </div>
+      </div><div class="content" id="slide-22"><div class="container">
+                  <p>おわり
+</p>
+                </div>
+      </div>
+          </div>
+        </div>
+        
+      </body>
+    </html>
